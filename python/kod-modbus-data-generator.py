@@ -33,10 +33,16 @@ def readCurrent(device):
     resultAmps = reqCurrent.registers
     return resultAmps
 
+def generateRndvoltage():
+    return random.randint(200,240)
+
+def generateRndcurrent():
+    return random.randint(0,10000)
+
 
 while True:
-    wVolts = random.randint(200, 240)
-    wAmps = random.randint(0, 10000)
+    wVolts = generateRndvoltage()
+    wAmps = generateRndcurrent()
 
     writeVoltage(wVolts)
     writeCurrent(wAmps)
