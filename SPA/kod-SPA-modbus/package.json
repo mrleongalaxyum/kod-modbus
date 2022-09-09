@@ -2,8 +2,10 @@
   "name": "kod-SPA-modbus",
   "version": "1.0.0",
   "dependencies": {
+    "@influxdata/influxdb-client": "^1.29.0",
     "bootstrap": "^5.2.1",
     "chart.js": "^3.9.1",
-    "chartjs": "^0.3.24"
+    "chartjs": "^0.3.24",
+    "influxdb": "^0.0.1"
   }
 }
