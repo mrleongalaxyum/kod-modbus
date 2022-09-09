@@ -67,9 +67,11 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=${GRAFANA_USERNAME}
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+      - ALLOW_EMBEDDING=true
     user: "1000"
 volumes:
   influxdb-storage:
   chronograf-storage:
   grafana-storage:
+    
     
