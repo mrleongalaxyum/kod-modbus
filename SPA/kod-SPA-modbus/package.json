@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "bootstrap": "^5.2.1",
+    "chart.js": "^3.9.1",
     "chartjs": "^0.3.24"
   }
 }
