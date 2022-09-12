@@ -16,6 +16,14 @@
         "env": []
     },
     {
+        "id": "6092890d14ac8d7f",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "7e05ac45fab33178",
         "type": "modbus-client",
         "name": "",
@@ -277,7 +285,7 @@
         "type": "debug",
         "z": "18243aa4f20abaa8",
         "name": "debug 2",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1481,7 +1489,7 @@
         "type": "function",
         "z": "b405fd0bbb6541d3",
         "name": "BuildTemplate",
-        "func": "//NOTE, more then one chart on a page, rename in the second and following \n//templates the \"myframe\" variable so that every template has a unique name.\n\nvar panelid=2\n\nmsg.payload = \"http://localhost:3000/d/H3iLFJM4k/modbus-data?orgId=1\"+\n\"&refresh=1m\"+\n\"&theme=dark\"+\n\"&from=\"+ msg.fromdate +\n\"&to=\"+ msg.enddate +\n\"&panelId=\"+panelid\n\nreturn msg;\n\n",
+        "func": "//NOTE, more then one chart on a page, rename in the second and following \n//templates the \"myframe\" variable so that every template has a unique name.\n\nvar panelid=2\n\nmsg.payload = \"http://localhost:3000/d-solo/H3iLFJM4k/modbus-data?orgId=1\"+\n\"&refresh=1m\"+\n\"&theme=dark\"+\n\"&from=\"+ msg.fromdate +\n\"&to=\"+ msg.enddate +\n\"&panelId=\"+panelid\n\nreturn msg;\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1573,6 +1581,110 @@
         "wires": [
             [
                 "0e119340d3e637e8"
+            ]
+        ]
+    },
+    {
+        "id": "df81cc9e.a9171",
+        "type": "inject",
+        "z": "6092890d14ac8d7f",
+        "name": "repeat every 10s",
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 280,
+        "wires": [
+            [
+                "6ca36476.d0597c"
+            ]
+        ]
+    },
+    {
+        "id": "76678044.5aaeb",
+        "type": "debug",
+        "z": "6092890d14ac8d7f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 810,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "bd9b5761.fb4918",
+        "type": "debug",
+        "z": "6092890d14ac8d7f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 790,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "b18a50dd.f7e5c",
+        "type": "uibuilder",
+        "z": "6092890d14ac8d7f",
+        "name": "",
+        "topic": "",
+        "url": "chart",
+        "fwdInMessages": false,
+        "allowScripts": false,
+        "allowStyles": false,
+        "copyIndex": true,
+        "templateFolder": "vue",
+        "extTemplate": "",
+        "showfolder": false,
+        "reload": false,
+        "sourceFolder": "src",
+        "deployedVersion": "5.1.1",
+        "x": 650,
+        "y": 280,
+        "wires": [
+            [
+                "76678044.5aaeb"
+            ],
+            [
+                "bd9b5761.fb4918"
+            ]
+        ]
+    },
+    {
+        "id": "6ca36476.d0597c",
+        "type": "change",
+        "z": "6092890d14ac8d7f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "($random()*10)+($random()*10)\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 280,
+        "wires": [
+            [
+                "b18a50dd.f7e5c"
             ]
         ]
     }
