@@ -5,6 +5,7 @@
     "private": true,
     "dependencies": {
         "node-red-contrib-modbus": "~5.23.1",
+        "node-red-contrib-uibuilder": "~5.1.1",
         "node-red-dashboard": "~3.2.0"
     }
 }
