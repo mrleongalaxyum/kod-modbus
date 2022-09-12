@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  node-red:
+    image: nodered/node-red:latest
+    environment:
+      - TZ=Europe/Zagreb
+    ports:
+      - "1880:1880"
+    networks:
+      - modbus-net
+    volumes:
+      - /home/leon/dockeri/kod-modbus/node-red:/data
+
+
+networks:
+  modbus-net:
