@@ -34,7 +34,7 @@ services:
     ports:
       - '8086:8086'
     volumes:
-      - /home/leon/dockeri/influxdb/storage:/var/lib/influxdb
+      - /home/leon/dockeri/kod-modbus/influxdb/storage:/var/lib/influxdb
     environment:
       - INFLUXDB_DB=db0
       - INFLUXDB_ADMIN_USER=${INFLUXDB_USERNAME}
@@ -69,6 +69,7 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
       - GF_SECURITY_ALLOW_EMBEDDING=true
       - GF_PANELS_DISABLE_SANITIZE_HTML=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
 
 
     user: "1000"
