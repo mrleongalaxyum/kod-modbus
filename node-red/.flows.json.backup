@@ -16,6 +16,22 @@
         "env": []
     },
     {
+        "id": "dfb71945d80ee57b",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c447761f81aaafa4",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "7e05ac45fab33178",
         "type": "modbus-client",
         "name": "",
@@ -189,33 +205,63 @@
         "className": ""
     },
     {
-        "id": "1ff97cd4.681d5b",
-        "type": "ui_tab",
-        "name": "GrafanaTest",
-        "icon": "dashboard",
-        "order": 37
-    },
-    {
-        "id": "401d066a.62ae48",
-        "type": "ui_tab",
-        "name": "Report (New)",
-        "icon": "event_note",
-        "order": 12
-    },
-    {
-        "id": "1bb3770b.b9a7c9",
-        "type": "ui_tab",
-        "name": "KPI",
-        "icon": "trending_up",
-        "order": 13
-    },
-    {
         "id": "d580ed5a6fa4fd05",
         "type": "Stackhero-InfluxDB-v2-Server",
         "name": "kod-modbus-data-bucket",
         "host": "influxdb",
         "port": "8086",
         "tls": false
+    },
+    {
+        "id": "2a7b81d0073f7e56",
+        "type": "ui_group",
+        "name": "Graphs",
+        "tab": "699e1f9cdc62f62b",
+        "order": 3,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "346f3afd.14dd56",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "9c66415.50bbe4",
+        "type": "ui_group",
+        "name": "Filters",
+        "tab": "",
+        "order": 2,
+        "disp": true,
+        "width": "24",
+        "collapse": false
+    },
+    {
+        "id": "56c070e2cc5b4523",
+        "type": "ui_group",
+        "name": "Bathroom",
+        "tab": "1ff97cd4.681d5b",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "c18aa7b2dd00a1c1",
+        "type": "ui_group",
+        "name": "Bathroom",
+        "tab": "1ff97cd4.681d5b",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
     },
     {
         "id": "0345c4f71e25d675",
@@ -271,14 +317,14 @@
         "id": "bf62c8451349c5a4",
         "type": "ui_text",
         "z": "18243aa4f20abaa8",
-        "group": "d57dae30345897ee",
+        "group": "2a7b81d0073f7e56",
         "order": 0,
         "width": 0,
         "height": 0,
         "name": "",
         "label": "Current [A]:",
         "format": "{{msg.payload}}",
-        "layout": "row-right",
+        "layout": "col-center",
         "className": "",
         "x": 770,
         "y": 40,
@@ -304,6 +350,7 @@
         "id": "0e1a87a11a4467db",
         "type": "ui_chart",
         "z": "18243aa4f20abaa8",
+        "d": true,
         "name": "",
         "group": "d57dae30345897ee",
         "order": 1,
@@ -943,14 +990,14 @@
         "id": "459037e978df3816",
         "type": "ui_text",
         "z": "18243aa4f20abaa8",
-        "group": "453555f47793614f",
+        "group": "2a7b81d0073f7e56",
         "order": 0,
         "width": 0,
         "height": 0,
         "name": "",
         "label": "Voltage [V]:",
         "format": "{{msg.payload}}",
-        "layout": "row-right",
+        "layout": "col-center",
         "className": "",
         "x": 1510,
         "y": 40,
@@ -998,6 +1045,7 @@
         "id": "2c44aae822cf105c",
         "type": "ui_chart",
         "z": "18243aa4f20abaa8",
+        "d": true,
         "name": "",
         "group": "453555f47793614f",
         "order": 1,
@@ -1042,6 +1090,7 @@
         "id": "d3cab109c6b834f3",
         "type": "ui_chart",
         "z": "18243aa4f20abaa8",
+        "d": true,
         "name": "",
         "group": "453555f47793614f",
         "order": 1,
@@ -1086,6 +1135,7 @@
         "id": "57ed9ec67dbbec09",
         "type": "ui_chart",
         "z": "18243aa4f20abaa8",
+        "d": true,
         "name": "",
         "group": "453555f47793614f",
         "order": 1,
@@ -1130,6 +1180,7 @@
         "id": "9acf6990f0a38b26",
         "type": "ui_chart",
         "z": "18243aa4f20abaa8",
+        "d": true,
         "name": "",
         "group": "d57dae30345897ee",
         "order": 1,
@@ -1174,6 +1225,7 @@
         "id": "aeba4c0e78d6b75a",
         "type": "ui_chart",
         "z": "18243aa4f20abaa8",
+        "d": true,
         "name": "",
         "group": "d57dae30345897ee",
         "order": 1,
@@ -1259,8 +1311,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 610,
-        "y": 120,
+        "x": 570,
+        "y": 40,
         "wires": []
     },
     {
@@ -1358,7 +1410,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 620,
-        "y": 240,
+        "y": 260,
         "wires": []
     },
     {
@@ -1387,7 +1439,8 @@
         "y": 320,
         "wires": [
             [
-                "924254433ee9ef24"
+                "924254433ee9ef24",
+                "6708868bc82d672e"
             ],
             []
         ]
@@ -1406,7 +1459,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 620,
-        "y": 300,
+        "y": 340,
         "wires": []
     },
     {
@@ -1426,7 +1479,7 @@
         "type": "function",
         "z": "6ad5b9fd60cc0a30",
         "name": "prepare holding reg data",
-        "func": "\nmsg.payload = {\n    // You bucket\n    // Optional (it can be defined in the node credentials settings)\n    //bucket: 'myBucket',\n\n    // Precision of timestamp\n    // Optional\n    // Can be `ns` (nanoseconds),\n    //        `us` (microseconds),\n    //        `ms` (milliseconds),\n    //        `s` (seconds).\n    // The default is `ns`\n    // Note: if you set the `timestamp` field to `Date.now()`, you have to set the `precision` to `ms`\n    precision: 'ms',\n\n    // Data to send to InfluxDB\n    // Can be an array of objects or only one object\n    data: [\n        {\n            measurement: 'modbus-holding-regs',\n\n            tags: {\n                deviceId: 'modbus-sim-1',\n                dataType: 'holding-reg',\n                location: 'kod'\n            },\n\n            fields: {\n                voltage: msg.payload[0],\n                current: msg.payload[1],\n                reg2: msg.payload[2],\n                reg3: msg.payload[3],\n                reg4: msg.payload[4],\n                reg5: msg.payload[5],\n                reg6: msg.payload[6],\n                reg7: msg.payload[7],\n                reg8: msg.payload[8],\n                reg9: msg.payload[9],\n                reg10: msg.payload[10],\n                reg11: msg.payload[11],\n                reg12: msg.payload[12],\n                reg13: msg.payload[13],\n                reg14: msg.payload[14],\n                reg15: msg.payload[15]\n            },\n\n            timestamp: Date.now()\n        },\n\n        // More data can be send here, simply re add an object\n        // { ... },\n    ]\n};\n\nreturn msg;",
+        "func": "\nmsg.payload = {\n    // You bucket\n    // Optional (it can be defined in the node credentials settings)\n    //bucket: 'myBucket',\n\n    // Precision of timestamp\n    // Optional\n    // Can be `ns` (nanoseconds),\n    //        `us` (microseconds),\n    //        `ms` (milliseconds),\n    //        `s` (seconds).\n    // The default is `ns`\n    // Note: if you set the `timestamp` field to `Date.now()`, you have to set the `precision` to `ms`\n    precision: 'ms',\n\n    // Data to send to InfluxDB\n    // Can be an array of objects or only one object\n    data: [\n        {\n            measurement: 'modbus-holding-registers',\n\n            tags: {\n                deviceId: 'modbus-sim-1',\n                dataType: 'holding-',\n                location: 'kod'\n            },\n\n            fields: {\n                0: msg.payload[0],\n                1: msg.payload[1],\n                2: msg.payload[2],\n                3: msg.payload[3],\n                4: msg.payload[4],\n                5: msg.payload[5],\n                6: msg.payload[6],\n                7: msg.payload[7],\n                8: msg.payload[8],\n                9: msg.payload[9],\n                10: msg.payload[10],\n                11: msg.payload[11],\n                12: msg.payload[12],\n                13: msg.payload[13],\n                14: msg.payload[14],\n                15: msg.payload[15]\n            },\n\n            timestamp: Date.now()\n        },\n\n        // More data can be send here, simply re add an object\n        // { ... },\n    ]\n};\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1476,7 +1529,7 @@
         "type": "function",
         "z": "6ad5b9fd60cc0a30",
         "name": "prepare input-reg data",
-        "func": "\nmsg.payload = {\n    // You bucket\n    // Optional (it can be defined in the node credentials settings)\n    //bucket: 'myBucket',\n\n    // Precision of timestamp\n    // Optional\n    // Can be `ns` (nanoseconds),\n    //        `us` (microseconds),\n    //        `ms` (milliseconds),\n    //        `s` (seconds).\n    // The default is `ns`\n    // Note: if you set the `timestamp` field to `Date.now()`, you have to set the `precision` to `ms`\n    precision: 'ms',\n\n    // Data to send to InfluxDB\n    // Can be an array of objects or only one object\n    data: [\n        {\n            measurement: 'modbus-input-registers',\n\n            tags: {\n                deviceId: 'modbus-sim-1',\n                dataType: 'input-register',\n                location: 'kod'\n            },\n\n            fields: {\n                inputRegister0: msg.payload[0],\n                inputRegister1: msg.payload[1],\n                inputRegister2: msg.payload[2],\n                inputRegister3: msg.payload[3],\n                inputRegister4: msg.payload[4],\n                inputRegister5: msg.payload[5],\n                inputRegister6: msg.payload[6],\n                inputRegister7: msg.payload[7],\n                inputRegister8: msg.payload[8],\n                inputRegister9: msg.payload[9],\n                inputRegister10: msg.payload[10],\n                inputRegister11: msg.payload[11],\n                inputRegister12: msg.payload[12],\n                inputRegister13: msg.payload[13],\n                inputRegister14: msg.payload[14],\n                inputRegister15: msg.payload[15],\n            },\n\n            timestamp: Date.now()\n        },\n\n        // More data can be send here, simply re add an object\n        // { ... },\n    ]\n};\n\nreturn msg;",
+        "func": "\nmsg.payload = {\n    // You bucket\n    // Optional (it can be defined in the node credentials settings)\n    //bucket: 'myBucket',\n\n    // Precision of timestamp\n    // Optional\n    // Can be `ns` (nanoseconds),\n    //        `us` (microseconds),\n    //        `ms` (milliseconds),\n    //        `s` (seconds).\n    // The default is `ns`\n    // Note: if you set the `timestamp` field to `Date.now()`, you have to set the `precision` to `ms`\n    precision: 'ms',\n\n    // Data to send to InfluxDB\n    // Can be an array of objects or only one object\n    data: [\n        {\n            measurement: 'modbus-input-registers',\n\n            tags: {\n                deviceId: 'modbus-sim-1',\n                dataType: 'input-register',\n                location: 'kod'\n            },\n\n            fields: {\n                0: msg.payload[0],\n                1: msg.payload[1],\n                2: msg.payload[2],\n                3: msg.payload[3],\n                4: msg.payload[4],\n                5: msg.payload[5],\n                6: msg.payload[6],\n                7: msg.payload[7],\n                8: msg.payload[8],\n                9: msg.payload[9],\n                10: msg.payload[10],\n                11: msg.payload[11],\n                12: msg.payload[12],\n                13: msg.payload[13],\n                14: msg.payload[14],\n                15: msg.payload[15],\n            },\n\n            timestamp: Date.now()\n        },\n\n        // More data can be send here, simply re add an object\n        // { ... },\n    ]\n};\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1498,6 +1551,482 @@
         "name": "InfluxDB WRITE",
         "x": 1160,
         "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6708868bc82d672e",
+        "type": "function",
+        "z": "6ad5b9fd60cc0a30",
+        "name": "prepare discrete-input data",
+        "func": "\nmsg.payload = {\n    // You bucket\n    // Optional (it can be defined in the node credentials settings)\n    //bucket: 'myBucket',\n\n    // Precision of timestamp\n    // Optional\n    // Can be `ns` (nanoseconds),\n    //        `us` (microseconds),\n    //        `ms` (milliseconds),\n    //        `s` (seconds).\n    // The default is `ns`\n    // Note: if you set the `timestamp` field to `Date.now()`, you have to set the `precision` to `ms`\n    precision: 'ms',\n\n    // Data to send to InfluxDB\n    // Can be an array of objects or only one object\n    data: [\n        {\n            measurement: 'modbus-discrete-inputs',\n\n            tags: {\n                deviceId: 'modbus-sim-1',\n                dataType: 'discrete-input',\n                location: 'kod'\n            },\n\n            fields: {\n                0: msg.payload[0],\n                1: msg.payload[1],\n                2: msg.payload[2],\n                3: msg.payload[3],\n                4: msg.payload[4],\n                5: msg.payload[5],\n                6: msg.payload[6],\n                7: msg.payload[7],\n                8: msg.payload[8],\n                9: msg.payload[9],\n                10: msg.payload[10],\n                11: msg.payload[11],\n                12: msg.payload[12],\n                13: msg.payload[13],\n                14: msg.payload[14],\n                15: msg.payload[15],\n            },\n\n            timestamp: Date.now()\n        },\n\n        // More data can be send here, simply re add an object\n        // { ... },\n    ]\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 280,
+        "wires": [
+            [
+                "7ea9bf5b506e4aa5"
+            ]
+        ]
+    },
+    {
+        "id": "7ea9bf5b506e4aa5",
+        "type": "Stackhero-InfluxDB-v2-write",
+        "z": "6ad5b9fd60cc0a30",
+        "server": "d580ed5a6fa4fd05",
+        "name": "InfluxDB WRITE",
+        "x": 1160,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0b0a95bd8195814c",
+        "type": "Stackhero-InfluxDB-v2-query",
+        "z": "dfb71945d80ee57b",
+        "d": true,
+        "server": "d580ed5a6fa4fd05",
+        "name": "",
+        "x": 690,
+        "y": 600,
+        "wires": [
+            [
+                "832a4cd576e50675"
+            ]
+        ]
+    },
+    {
+        "id": "2e20d61f.4aa97a",
+        "type": "ui_dropdown",
+        "z": "dfb71945d80ee57b",
+        "name": "",
+        "label": "Dynamic Options",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "346f3afd.14dd56",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 550,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bca9b0ae.b6384",
+        "type": "inject",
+        "z": "dfb71945d80ee57b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 280,
+        "wires": [
+            [
+                "5d2ee77f.a8fe38"
+            ]
+        ]
+    },
+    {
+        "id": "5d2ee77f.a8fe38",
+        "type": "function",
+        "z": "dfb71945d80ee57b",
+        "name": "",
+        "func": "\nvar pl = [\n    {\n        \"one\":{\n            \"param\":1,\n            \"data\":123\n        }\n    },\n    {\n        \"two\":{\n            \"param\":1,\n            \"data\":123\n        }\n    },\n    {\n    \"three\":{\n            \"param\":1,\n            \"data\":123\n        }\n    }\n]\nmsg.options = pl\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 380,
+        "y": 280,
+        "wires": [
+            [
+                "2e20d61f.4aa97a"
+            ]
+        ]
+    },
+    {
+        "id": "a989ad9bbcd0dbf5",
+        "type": "inject",
+        "z": "dfb71945d80ee57b",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 600,
+        "wires": [
+            [
+                "64d4c83e01422b27"
+            ]
+        ]
+    },
+    {
+        "id": "64d4c83e01422b27",
+        "type": "function",
+        "z": "dfb71945d80ee57b",
+        "d": true,
+        "name": "prepare query",
+        "func": "msg.topic = [\n    'from(bucket: \"modbus-data\")',\n    '|> range(start: now-15m, stop: now)',\n    '|> filter(fn: (r) => r[\"_measurement\"] == \"modbus-holding-registers\")',\n    '|> aggregateWindow(every: 1h, fn: mean, createEmpty: false)',\n    '|> yield(name: \"mean\")'\n\n   \n].join('\\n');\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 600,
+        "wires": [
+            [
+                "0b0a95bd8195814c"
+            ]
+        ]
+    },
+    {
+        "id": "832a4cd576e50675",
+        "type": "debug",
+        "z": "dfb71945d80ee57b",
+        "d": true,
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "6a4b85d5a541341f",
+        "type": "ui_button",
+        "z": "c447761f81aaafa4",
+        "name": "",
+        "group": "2a7b81d0073f7e56",
+        "order": 10,
+        "width": "2",
+        "height": "1",
+        "passthru": true,
+        "label": "24 H",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "24h",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 330,
+        "y": 160,
+        "wires": [
+            [
+                "5d3cf572bfff4da7"
+            ]
+        ]
+    },
+    {
+        "id": "7a6b3511db12f3e1",
+        "type": "ui_button",
+        "z": "c447761f81aaafa4",
+        "name": "",
+        "group": "2a7b81d0073f7e56",
+        "order": 9,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "12 H",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "12h",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 330,
+        "y": 200,
+        "wires": [
+            [
+                "5d3cf572bfff4da7"
+            ]
+        ]
+    },
+    {
+        "id": "e2e1ea2acbdc9e28",
+        "type": "ui_button",
+        "z": "c447761f81aaafa4",
+        "name": "",
+        "group": "2a7b81d0073f7e56",
+        "order": 8,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "1 H",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1h",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "5d3cf572bfff4da7"
+            ]
+        ]
+    },
+    {
+        "id": "5d3cf572bfff4da7",
+        "type": "function",
+        "z": "c447761f81aaafa4",
+        "name": "SetTimeRange",
+        "func": "var p_30d  = 1000*60*60*24*30 ; //30 Days\nvar p_7d  = 1000*60*60*24*7 ; //7 Days\nvar p_1d   =  1000*60*60*24 ; // 1 Day\nvar p_hr = 1000*60*60; //1 Hour\n\nvar d = new Date();\nvar current = d.getTime();\n\n\nmsg.fromdate = \"now-\" + msg.payload;\nmsg.enddate = \"now\";\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 160,
+        "wires": [
+            [
+                "eacb2b9e04cc6215"
+            ]
+        ]
+    },
+    {
+        "id": "a8b54af9dcc696f2",
+        "type": "ui_template",
+        "z": "c447761f81aaafa4",
+        "group": "56c070e2cc5b4523",
+        "name": "Page Got Loaded",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "format": "<script>\n(function() {\n    (function(scope) {\n        scope.send({payload: \"preload\"}); // this gets sent when the view is opened in the browser\n    })(scope);\n})();\n</script>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "templateScope": "local",
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "6a4b85d5a541341f"
+            ]
+        ]
+    },
+    {
+        "id": "9b4d9f58121d558b",
+        "type": "ui_template",
+        "z": "c447761f81aaafa4",
+        "group": "2a7b81d0073f7e56",
+        "name": "Plot Grafana",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "format": "<html>\n<iframe id=\"myFrame\" width=\"600px\" height=\"300px\" style = \"overflow:hidden; margin:auto; border:0px solid green;\"></iframe>\n\n<script>\n//NOTE, more then one chart on a page, rename in the second and following \n//templates the \"myframe\" variable so that every template has a unique name.\n(function(scope) {\n    // watch msg object from Node-RED\n    scope.$watch('msg', function(msg) {\n        // new message received\n        var x = document.getElementById('myFrame');\n        x.setAttribute('src', msg.payload); \n        });\n})(scope);\n</script>\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1030,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eacb2b9e04cc6215",
+        "type": "function",
+        "z": "c447761f81aaafa4",
+        "name": "BuildTemplate",
+        "func": "//NOTE, more then one chart on a page, rename in the second and following \n//templates the \"myframe\" variable so that every template has a unique name.\n\nvar panelid = 4\n\nmsg.payload = \"http://localhost:3000/d-solo/H3iLFJM4k/modbus-data?orgId=1\"+\n    \"&refresh=15s\" +\n    \"&theme=light\" +\n    \"&from=\" + msg.fromdate +\n    \"&to=\" + msg.enddate +\n    \"&panelId=\" + panelid\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 160,
+        "wires": [
+            [
+                "9b4d9f58121d558b",
+                "da89bc031a15b3f3"
+            ]
+        ]
+    },
+    {
+        "id": "da89bc031a15b3f3",
+        "type": "debug",
+        "z": "c447761f81aaafa4",
+        "name": "debug 8",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "9b2d6fa6ced692f9",
+        "type": "ui_button",
+        "z": "c447761f81aaafa4",
+        "name": "",
+        "group": "2a7b81d0073f7e56",
+        "order": 8,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "10 Min",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "10m",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 330,
+        "y": 80,
+        "wires": [
+            [
+                "5d3cf572bfff4da7"
+            ]
+        ]
+    },
+    {
+        "id": "ce5d66f30672ded6",
+        "type": "ui_dropdown",
+        "z": "c447761f81aaafa4",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "d57dae30345897ee",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Current",
+                "value": "",
+                "type": "str"
+            },
+            {
+                "label": "Voltage",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 500,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bb98157e1dc5a363",
+        "type": "ui_dropdown",
+        "z": "c447761f81aaafa4",
+        "name": "",
+        "label": "Select Data Type",
+        "tooltip": "",
+        "place": "Select Data type",
+        "group": "2a7b81d0073f7e56",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Holding Registers",
+                "value": "holdingReg",
+                "type": "str"
+            },
+            {
+                "label": "Coils",
+                "value": "coils",
+                "type": "str"
+            },
+            {
+                "label": "Input registers",
+                "value": "inputReg",
+                "type": "str"
+            },
+            {
+                "label": "Discrete Inputs",
+                "value": "discreteIn",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 290,
+        "y": 440,
         "wires": [
             []
         ]
