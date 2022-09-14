@@ -34,7 +34,7 @@ def readCurrent(device):
 
 
 def generateRndVoltage():
-    return random.randint(218, 240)
+    return random.randint(220, 240)
 
 
 def generateRndCurrent():

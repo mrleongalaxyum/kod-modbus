@@ -27,7 +27,7 @@
         "id": "0b8a54443f8d1c64",
         "type": "tab",
         "label": "Flow 2",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
@@ -222,46 +222,6 @@
         "width": "20",
         "collapse": false,
         "className": ""
-    },
-    {
-        "id": "346f3afd.14dd56",
-        "type": "ui_group",
-        "name": "Default",
-        "tab": "",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "9c66415.50bbe4",
-        "type": "ui_group",
-        "name": "Filters",
-        "tab": "",
-        "order": 2,
-        "disp": true,
-        "width": "24",
-        "collapse": false
-    },
-    {
-        "id": "56c070e2cc5b4523",
-        "type": "ui_group",
-        "name": "Bathroom",
-        "tab": "1ff97cd4.681d5b",
-        "order": 1,
-        "disp": true,
-        "width": "12",
-        "collapse": false
-    },
-    {
-        "id": "c18aa7b2dd00a1c1",
-        "type": "ui_group",
-        "name": "Bathroom",
-        "tab": "1ff97cd4.681d5b",
-        "order": 1,
-        "disp": true,
-        "width": "12",
-        "collapse": false
     },
     {
         "id": "86228.687a5dd88",
@@ -1726,7 +1686,8 @@
         "y": 160,
         "wires": [
             [
-                "6b45e04b199bc22c"
+                "6b45e04b199bc22c",
+                "812c49dfe0836e3c"
             ]
         ]
     },
@@ -1756,9 +1717,9 @@
         "type": "function",
         "z": "c447761f81aaafa4",
         "name": "BuildTemplate",
-        "func": "//NOTE, more then one chart on a page, rename in the second and following \n//templates the \"myframe\" variable so that every template has a unique name.\n\nvar panelid = global.get(regSel)\n\nmsg.payload = \"http://localhost:3000/d-solo/H3iLFJM4k/modbus-data?orgId=1\"+\n    \"&refresh=100ms\" +\n    \"&theme=light\" +\n    \"&from=\" + msg.fromdate +\n    \"&to=\" + msg.enddate +\n    \"&panelId=\" + panelid\n\nreturn msg;\n\n",
+        "func": "//NOTE, more then one chart on a page, rename in the second and following \n//templates the \"myframe\" variable so that every template has a unique name.\n\nvar panelid = flow.regSel;\n\nmsg.payload = \"http://localhost:3000/d-solo/H3iLFJM4k/modbus-data?orgId=1\"+\n    \"&refresh=100ms\" +\n    \"&theme=light\" +\n    \"&from=\" + msg.fromdate +\n    \"&to=\" + msg.enddate +\n    \"&panelId=\" + panelid\n\nreturn msg;\n\n",
         "outputs": 1,
-        "noerr": 1,
+        "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
@@ -1856,8 +1817,8 @@
         "topic": "topic",
         "topicType": "msg",
         "className": "",
-        "x": 550,
-        "y": 360,
+        "x": 670,
+        "y": 460,
         "wires": [
             []
         ]
@@ -1918,14 +1879,83 @@
         ],
         "payload": "",
         "topic": "regSel",
-        "topicType": "global",
+        "topicType": "flow",
         "className": "",
         "x": 230,
         "y": 360,
         "wires": [
             [
-                "eacb2b9e04cc6215"
+                "9fd2d8d04c6ecb94",
+                "4b88c37ead1337bf"
             ]
+        ]
+    },
+    {
+        "id": "9fd2d8d04c6ecb94",
+        "type": "debug",
+        "z": "c447761f81aaafa4",
+        "name": "debug 9",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 260,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "922af606225abba3",
+        "type": "debug",
+        "z": "c447761f81aaafa4",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "flow.get(regSel)",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "812c49dfe0836e3c",
+        "type": "function",
+        "z": "c447761f81aaafa4",
+        "name": "function 3",
+        "func": "flow.set(\"regSel\", 1);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4b88c37ead1337bf",
+        "type": "function",
+        "z": "c447761f81aaafa4",
+        "name": "function 4",
+        "func": "flow.set(\"regSel\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 360,
+        "wires": [
+            []
         ]
     },
     {
