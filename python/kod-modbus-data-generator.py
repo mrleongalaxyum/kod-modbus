@@ -7,7 +7,6 @@ voltageRegister = 0
 currentRegister = 1
 
 num = 0
-inc = 0
 wVolts = random.randint(220, 240)
 wAmps = random.randint(0, 1000)
 client = ModbusTcpClient('127.0.0.1', 5020)
@@ -34,7 +33,7 @@ def readCurrent(device):
 
 
 def generateRndVoltage():
-    return random.randint(220, 240)
+    return random.randint(225, 235)
 
 
 def generateRndCurrent():
@@ -44,12 +43,12 @@ def generateRndCurrent():
 while True:
     wVolts = generateRndVoltage()
     wAmps = generateRndCurrent()
-
-    writeVoltage(wVolts)
-    writeCurrent(wAmps)
+    if (num%3==0):
+        writeVoltage(wVolts)
+    if (num % 4==0):
+        writeCurrent(wAmps)
 
     print("writing voltage:", wVolts, "   ", "reading voltage", readVoltage(client), "  writing current:", wAmps,
           "    reading current:", readCurrent(client))
     num += 1
-    inc += 1
     sleep(2)
