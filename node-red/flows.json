@@ -1685,10 +1685,7 @@
         "x": 130,
         "y": 160,
         "wires": [
-            [
-                "6b45e04b199bc22c",
-                "812c49dfe0836e3c"
-            ]
+            []
         ]
     },
     {
@@ -1700,14 +1697,14 @@
         "order": 5,
         "width": 0,
         "height": 0,
-        "format": "<html>\n<iframe id=\"myFrame\" width=\"600px\" height=\"300px\" style = \"overflow:hidden; margin:auto; border:0px solid green;\"></iframe>\n\n<script>\n//NOTE, more then one chart on a page, rename in the second and following \n//templates the \"myframe\" variable so that every template has a unique name.\n(function(scope) {\n    // watch msg object from Node-RED\n    scope.$watch('msg', function(msg) {\n        // new message received\n        var x = document.getElementById('myFrame');\n        x.setAttribute('src', msg.payload); \n        });\n})(scope);\n</script>\n</html>",
+        "format": "<html>\n<iframe id=\"myFrame\" width=\"800px\" height=\"500px\" style = \"overflow:hidden; margin:auto; border:0px solid green;\"></iframe>\n\n<script>\n//NOTE, more then one chart on a page, rename in the second and following \n//templates the \"myframe\" variable so that every template has a unique name.\n(function(scope) {\n    // watch msg object from Node-RED\n    scope.$watch('msg', function(msg) {\n        // new message received\n        var x = document.getElementById('myFrame');\n        x.setAttribute('src', msg.payload); \n        });\n})(scope);\n</script>\n</html>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 1030,
-        "y": 160,
+        "x": 1050,
+        "y": 140,
         "wires": [
             []
         ]
@@ -1717,7 +1714,7 @@
         "type": "function",
         "z": "c447761f81aaafa4",
         "name": "BuildTemplate",
-        "func": "//NOTE, more then one chart on a page, rename in the second and following \n//templates the \"myframe\" variable so that every template has a unique name.\n\nvar panelid = 2;\n\nmsg.payload = \"http://localhost:3000/d-solo/H3iLFJM4k/modbus-data?orgId=1\"+\n    \"&refresh=100ms\" +\n    \"&theme=light\" +\n    \"&from=\" + msg.fromdate +\n    \"&to=\" + msg.enddate +\n    \"&panelId=\" + panelid\n\nreturn msg;\n\n",
+        "func": "//NOTE, more then one chart on a page, rename in the second and following \n//templates the \"myframe\" variable so that every template has a unique name.\n\nvar panelId=global.get(\"regSel\")\n\nmsg.payload = \"http://localhost:3000/d-solo/H3iLFJM4k/modbus-data?orgId=1\"+\n    \"&refresh=100ms\" +\n    \"&theme=light\" +\n    \"&from=\" + msg.fromdate +\n    \"&to=\" + msg.enddate +\n    \"&panelId=\" + panelId\n\nreturn msg;\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1858,35 +1855,35 @@
         "name": "",
         "label": "Select Data Type",
         "tooltip": "",
-        "place": "Select Data type",
+        "place": "Select Data Type",
         "group": "2a7b81d0073f7e56",
         "order": 0,
         "width": 0,
         "height": 0,
-        "passthru": true,
+        "passthru": false,
         "multiple": false,
         "options": [
             {
                 "label": "Current",
-                "value": 2,
+                "value": 1,
                 "type": "num"
             },
             {
                 "label": "Voltage",
-                "value": 1,
+                "value": 2,
                 "type": "num"
             }
         ],
         "payload": "",
-        "topic": "regSel",
-        "topicType": "flow",
+        "topic": "topic",
+        "topicType": "msg",
         "className": "",
         "x": 230,
         "y": 360,
         "wires": [
             [
-                "9fd2d8d04c6ecb94",
-                "4b88c37ead1337bf"
+                "4b88c37ead1337bf",
+                "6b45e04b199bc22c"
             ]
         ]
     },
@@ -1920,8 +1917,8 @@
         "targetType": "jsonata",
         "statusVal": "",
         "statusType": "auto",
-        "x": 760,
-        "y": 340,
+        "x": 480,
+        "y": 640,
         "wires": []
     },
     {
@@ -1929,14 +1926,14 @@
         "type": "function",
         "z": "c447761f81aaafa4",
         "name": "function 3",
-        "func": "flow.set(\"regSel\", 1);\nreturn msg;",
+        "func": "var regSel;\nglobal.set(\"regSel\", 1);",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 300,
-        "y": 280,
+        "x": 140,
+        "y": 260,
         "wires": [
             []
         ]
@@ -1946,7 +1943,7 @@
         "type": "function",
         "z": "c447761f81aaafa4",
         "name": "function 4",
-        "func": "flow.set(\"regSel\", msg.payload);\nreturn msg;",
+        "func": "global.set(\"regSel\", msg.payload);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1955,7 +1952,38 @@
         "x": 480,
         "y": 360,
         "wires": [
-            []
+            [
+                "eacb2b9e04cc6215"
+            ]
+        ]
+    },
+    {
+        "id": "ebe565afe5970103",
+        "type": "inject",
+        "z": "c447761f81aaafa4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 640,
+        "wires": [
+            [
+                "922af606225abba3"
+            ]
         ]
     },
     {
