@@ -1,4 +1,3 @@
-
 import random
 
 from pymodbus.client.sync import ModbusTcpClient
@@ -33,21 +32,24 @@ def readCurrent(device):
     resultAmps = reqCurrent.registers
     return resultAmps
 
-def generateRndvoltage():
-    return random.randint(218,240)
 
-def generateRndcurrent():
-    return random.randint(0,10000)
+def generateRndVoltage():
+    return random.randint(218, 240)
+
+
+def generateRndCurrent():
+    return random.randint(0, 10000)
 
 
 while True:
-    wVolts = generateRndvoltage()
-    wAmps = generateRndcurrent()
+    wVolts = generateRndVoltage()
+    wAmps = generateRndCurrent()
 
     writeVoltage(wVolts)
     writeCurrent(wAmps)
 
-    print("writing voltage:", wVolts, "   ", "reading voltage", readVoltage(client), "  writing current:", wAmps, "    reading current:",readCurrent(client))
+    print("writing voltage:", wVolts, "   ", "reading voltage", readVoltage(client), "  writing current:", wAmps,
+          "    reading current:", readCurrent(client))
     num += 1
     inc += 1
     sleep(2)

@@ -16,17 +16,17 @@
         "env": []
     },
     {
-        "id": "dfb71945d80ee57b",
+        "id": "c447761f81aaafa4",
         "type": "tab",
-        "label": "Flow 3",
+        "label": "Flow 4",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "c447761f81aaafa4",
+        "id": "0b8a54443f8d1c64",
         "type": "tab",
-        "label": "Flow 4",
+        "label": "Flow 2",
         "disabled": false,
         "info": "",
         "env": []
@@ -262,6 +262,24 @@
         "disp": true,
         "width": "12",
         "collapse": false
+    },
+    {
+        "id": "86228.687a5dd88",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "e006699.f40dd98",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e006699.f40dd98",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     },
     {
         "id": "0345c4f71e25d675",
@@ -1587,160 +1605,6 @@
         ]
     },
     {
-        "id": "0b0a95bd8195814c",
-        "type": "Stackhero-InfluxDB-v2-query",
-        "z": "dfb71945d80ee57b",
-        "d": true,
-        "server": "d580ed5a6fa4fd05",
-        "name": "",
-        "x": 690,
-        "y": 600,
-        "wires": [
-            [
-                "832a4cd576e50675"
-            ]
-        ]
-    },
-    {
-        "id": "2e20d61f.4aa97a",
-        "type": "ui_dropdown",
-        "z": "dfb71945d80ee57b",
-        "name": "",
-        "label": "Dynamic Options",
-        "tooltip": "",
-        "place": "Select option",
-        "group": "346f3afd.14dd56",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "multiple": false,
-        "options": [],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 550,
-        "y": 280,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "bca9b0ae.b6384",
-        "type": "inject",
-        "z": "dfb71945d80ee57b",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 220,
-        "y": 280,
-        "wires": [
-            [
-                "5d2ee77f.a8fe38"
-            ]
-        ]
-    },
-    {
-        "id": "5d2ee77f.a8fe38",
-        "type": "function",
-        "z": "dfb71945d80ee57b",
-        "name": "",
-        "func": "\nvar pl = [\n    {\n        \"one\":{\n            \"param\":1,\n            \"data\":123\n        }\n    },\n    {\n        \"two\":{\n            \"param\":1,\n            \"data\":123\n        }\n    },\n    {\n    \"three\":{\n            \"param\":1,\n            \"data\":123\n        }\n    }\n]\nmsg.options = pl\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 380,
-        "y": 280,
-        "wires": [
-            [
-                "2e20d61f.4aa97a"
-            ]
-        ]
-    },
-    {
-        "id": "a989ad9bbcd0dbf5",
-        "type": "inject",
-        "z": "dfb71945d80ee57b",
-        "d": true,
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 220,
-        "y": 600,
-        "wires": [
-            [
-                "64d4c83e01422b27"
-            ]
-        ]
-    },
-    {
-        "id": "64d4c83e01422b27",
-        "type": "function",
-        "z": "dfb71945d80ee57b",
-        "d": true,
-        "name": "prepare query",
-        "func": "msg.topic = [\n    'from(bucket: \"modbus-data\")',\n    '|> range(start: now-15m, stop: now)',\n    '|> filter(fn: (r) => r[\"_measurement\"] == \"modbus-holding-registers\")',\n    '|> aggregateWindow(every: 1h, fn: mean, createEmpty: false)',\n    '|> yield(name: \"mean\")'\n\n   \n].join('\\n');\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 440,
-        "y": 600,
-        "wires": [
-            [
-                "0b0a95bd8195814c"
-            ]
-        ]
-    },
-    {
-        "id": "832a4cd576e50675",
-        "type": "debug",
-        "z": "dfb71945d80ee57b",
-        "d": true,
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 960,
-        "y": 600,
-        "wires": []
-    },
-    {
         "id": "6a4b85d5a541341f",
         "type": "ui_button",
         "z": "c447761f81aaafa4",
@@ -1749,7 +1613,7 @@
         "order": 10,
         "width": "2",
         "height": "1",
-        "passthru": true,
+        "passthru": false,
         "label": "24 H",
         "tooltip": "",
         "color": "",
@@ -1847,7 +1711,7 @@
         "id": "a8b54af9dcc696f2",
         "type": "ui_template",
         "z": "c447761f81aaafa4",
-        "group": "56c070e2cc5b4523",
+        "group": "2a7b81d0073f7e56",
         "name": "Page Got Loaded",
         "order": 6,
         "width": 0,
@@ -1855,12 +1719,14 @@
         "format": "<script>\n(function() {\n    (function(scope) {\n        scope.send({payload: \"preload\"}); // this gets sent when the view is opened in the browser\n    })(scope);\n})();\n</script>",
         "storeOutMessages": false,
         "fwdInMessages": false,
+        "resendOnRefresh": false,
         "templateScope": "local",
+        "className": "",
         "x": 130,
         "y": 160,
         "wires": [
             [
-                "6a4b85d5a541341f"
+                "6b45e04b199bc22c"
             ]
         ]
     },
@@ -1890,9 +1756,9 @@
         "type": "function",
         "z": "c447761f81aaafa4",
         "name": "BuildTemplate",
-        "func": "//NOTE, more then one chart on a page, rename in the second and following \n//templates the \"myframe\" variable so that every template has a unique name.\n\nvar panelid = 4\n\nmsg.payload = \"http://localhost:3000/d-solo/H3iLFJM4k/modbus-data?orgId=1\"+\n    \"&refresh=15s\" +\n    \"&theme=light\" +\n    \"&from=\" + msg.fromdate +\n    \"&to=\" + msg.enddate +\n    \"&panelId=\" + panelid\n\nreturn msg;\n\n",
+        "func": "//NOTE, more then one chart on a page, rename in the second and following \n//templates the \"myframe\" variable so that every template has a unique name.\n\nvar panelid = global.get(regSel)\n\nmsg.payload = \"http://localhost:3000/d-solo/H3iLFJM4k/modbus-data?orgId=1\"+\n    \"&refresh=100ms\" +\n    \"&theme=light\" +\n    \"&from=\" + msg.fromdate +\n    \"&to=\" + msg.enddate +\n    \"&panelId=\" + panelid\n\nreturn msg;\n\n",
         "outputs": 1,
-        "noerr": 0,
+        "noerr": 1,
         "initialize": "",
         "finalize": "",
         "libs": [],
@@ -1950,45 +1816,10 @@
         ]
     },
     {
-        "id": "ce5d66f30672ded6",
-        "type": "ui_dropdown",
-        "z": "c447761f81aaafa4",
-        "name": "",
-        "label": "",
-        "tooltip": "",
-        "place": "Select option",
-        "group": "d57dae30345897ee",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "Current",
-                "value": "",
-                "type": "str"
-            },
-            {
-                "label": "Voltage",
-                "value": "",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 500,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "bb98157e1dc5a363",
         "type": "ui_dropdown",
         "z": "c447761f81aaafa4",
+        "d": true,
         "name": "",
         "label": "Select Data Type",
         "tooltip": "",
@@ -2025,10 +1856,266 @@
         "topic": "topic",
         "topicType": "msg",
         "className": "",
-        "x": 290,
-        "y": 440,
+        "x": 550,
+        "y": 360,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "6b45e04b199bc22c",
+        "type": "ui_button",
+        "z": "c447761f81aaafa4",
+        "name": "",
+        "group": "2a7b81d0073f7e56",
+        "order": 8,
+        "width": "2",
+        "height": "1",
+        "passthru": true,
+        "label": "1 min",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1m",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 330,
+        "y": 240,
+        "wires": [
+            [
+                "5d3cf572bfff4da7"
+            ]
+        ]
+    },
+    {
+        "id": "2dc037028b0acf9f",
+        "type": "ui_dropdown",
+        "z": "c447761f81aaafa4",
+        "name": "",
+        "label": "Select Data Type",
+        "tooltip": "",
+        "place": "Select Data type",
+        "group": "2a7b81d0073f7e56",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Current",
+                "value": 2,
+                "type": "num"
+            },
+            {
+                "label": "Voltage",
+                "value": 1,
+                "type": "num"
+            }
+        ],
+        "payload": "",
+        "topic": "regSel",
+        "topicType": "global",
+        "className": "",
+        "x": 230,
+        "y": 360,
+        "wires": [
+            [
+                "eacb2b9e04cc6215"
+            ]
+        ]
+    },
+    {
+        "id": "fe000015.cb567",
+        "type": "ui_dropdown",
+        "z": "0b8a54443f8d1c64",
+        "name": "",
+        "label": "Select 1",
+        "tooltip": "",
+        "place": "Select option 1",
+        "group": "86228.687a5dd88",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "options": [
+            {
+                "label": "A",
+                "value": "A",
+                "type": "str"
+            },
+            {
+                "label": "B",
+                "value": "B",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "S1",
+        "x": 280,
+        "y": 100,
+        "wires": [
+            [
+                "4824b297.cf378c"
+            ]
+        ]
+    },
+    {
+        "id": "5c0814e2.f909cc",
+        "type": "ui_button",
+        "z": "0b8a54443f8d1c64",
+        "name": "",
+        "group": "86228.687a5dd88",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 270,
+        "y": 280,
+        "wires": [
+            [
+                "3c943ed0.3fd552"
+            ]
+        ]
+    },
+    {
+        "id": "e8a2dda2.21b51",
+        "type": "ui_dropdown",
+        "z": "0b8a54443f8d1c64",
+        "name": "",
+        "label": "Select 2",
+        "tooltip": "",
+        "place": "Select option 2",
+        "group": "86228.687a5dd88",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "options": [
+            {
+                "label": "C",
+                "value": "C",
+                "type": "str"
+            },
+            {
+                "label": "D",
+                "value": "D",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "S2",
+        "x": 280,
+        "y": 200,
+        "wires": [
+            [
+                "4824b297.cf378c"
+            ]
+        ]
+    },
+    {
+        "id": "4824b297.cf378c",
+        "type": "join",
+        "z": "0b8a54443f8d1c64",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "1",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 450,
+        "y": 140,
+        "wires": [
+            [
+                "a3d05155.f4a6c"
+            ]
+        ]
+    },
+    {
+        "id": "a3d05155.f4a6c",
+        "type": "change",
+        "z": "0b8a54443f8d1c64",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "selected",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3c943ed0.3fd552",
+        "type": "change",
+        "z": "0b8a54443f8d1c64",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "selected",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 280,
+        "wires": [
+            [
+                "b8dae18b.dfdc1"
+            ]
+        ]
+    },
+    {
+        "id": "b8dae18b.dfdc1",
+        "type": "debug",
+        "z": "0b8a54443f8d1c64",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 700,
+        "y": 280,
+        "wires": []
     }
 ]
