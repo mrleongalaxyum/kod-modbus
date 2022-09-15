@@ -33,11 +33,11 @@ def readCurrent(device):
 
 
 def generateRndVoltage():
-    return random.randint(225, 235)
+    return random.randint(225, 230)
 
 
 def generateRndCurrent():
-    return random.randint(0, 10000)
+    return random.randint(100, 10000)
 
 
 while True:

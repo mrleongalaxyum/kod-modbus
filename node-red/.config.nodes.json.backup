@@ -868,5 +868,84 @@
                 "file": "/data/node_modules/node-red-contrib-uibuilder/nodes/uib-list/customNode.js"
             }
         }
+    },
+    "node-red-contrib-stackhero-influxdb-v2": {
+        "name": "node-red-contrib-stackhero-influxdb-v2",
+        "version": "1.0.4",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "stackhero-influxdb-v2-main": {
+                "name": "stackhero-influxdb-v2-main",
+                "types": [
+                    "Stackhero-InfluxDB-v2-Server"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-stackhero-influxdb-v2",
+                "file": "/data/node_modules/node-red-contrib-stackhero-influxdb-v2/src/main.js"
+            },
+            "stackhero-influxdb-v2-query": {
+                "name": "stackhero-influxdb-v2-query",
+                "types": [
+                    "Stackhero-InfluxDB-v2-query"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-stackhero-influxdb-v2",
+                "file": "/data/node_modules/node-red-contrib-stackhero-influxdb-v2/src/query.js"
+            },
+            "stackhero-influxdb-v2-write": {
+                "name": "stackhero-influxdb-v2-write",
+                "types": [
+                    "Stackhero-InfluxDB-v2-write"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-stackhero-influxdb-v2",
+                "file": "/data/node_modules/node-red-contrib-stackhero-influxdb-v2/src/write.js"
+            }
+        }
+    },
+    "node-red-node-ui-iframe": {
+        "name": "node-red-node-ui-iframe",
+        "version": "0.2.1",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "ui_iframe": {
+                "name": "ui_iframe",
+                "types": [
+                    "ui_iframe"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-node-ui-iframe",
+                "file": "/data/node_modules/node-red-node-ui-iframe/ui_iframe.js"
+            }
+        }
+    },
+    "node-red-node-ui-lineargauge": {
+        "name": "node-red-node-ui-lineargauge",
+        "version": "0.3.6",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "ui_lineargauge": {
+                "name": "ui_lineargauge",
+                "types": [
+                    "ui_lineargauge"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-node-ui-lineargauge",
+                "file": "/data/node_modules/node-red-node-ui-lineargauge/linear_gauge.js"
+            }
+        }
     }
 }
