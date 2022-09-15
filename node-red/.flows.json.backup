@@ -156,8 +156,8 @@
             "sizes": {
                 "sx": 48,
                 "sy": 48,
-                "gx": 6,
-                "gy": 6,
+                "gx": 10,
+                "gy": 3,
                 "cx": 6,
                 "cy": 6,
                 "px": 0,
@@ -180,7 +180,7 @@
         "tab": "251b81ee7792cb7d",
         "order": 1,
         "disp": true,
-        "width": "6",
+        "width": "8",
         "collapse": false,
         "className": ""
     },
@@ -220,7 +220,7 @@
         "name": "Home",
         "icon": "dashboard",
         "disabled": false,
-        "hidden": true
+        "hidden": false
     },
     {
         "id": "579a5e58c9ab45fc",
@@ -240,6 +240,17 @@
         "tab": "e006699.f40dd98",
         "order": 2,
         "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e4daa17e42e78a82",
+        "type": "ui_group",
+        "name": "Write Holding register:",
+        "tab": "251b81ee7792cb7d",
+        "order": 2,
+        "disp": true,
         "width": "6",
         "collapse": false,
         "className": ""
@@ -727,7 +738,7 @@
         "y": 160,
         "wires": [
             [
-                "812c49dfe0836e3c"
+                "083386f55e0c3401"
             ]
         ]
     },
@@ -843,59 +854,6 @@
         ]
     },
     {
-        "id": "9fd2d8d04c6ecb94",
-        "type": "debug",
-        "z": "c447761f81aaafa4",
-        "name": "debug 9",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 260,
-        "y": 480,
-        "wires": []
-    },
-    {
-        "id": "922af606225abba3",
-        "type": "debug",
-        "z": "c447761f81aaafa4",
-        "name": "debug 10",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "flow.get(regSel)",
-        "targetType": "jsonata",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 480,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "812c49dfe0836e3c",
-        "type": "function",
-        "z": "c447761f81aaafa4",
-        "name": "function 3",
-        "func": "var regSel;\nglobal.set(\"regSel\", 1);\nmsg.payload=1\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 140,
-        "y": 280,
-        "wires": [
-            [
-                "2dc037028b0acf9f"
-            ]
-        ]
-    },
-    {
         "id": "4b88c37ead1337bf",
         "type": "function",
         "z": "c447761f81aaafa4",
@@ -911,35 +869,6 @@
         "wires": [
             [
                 "eacb2b9e04cc6215"
-            ]
-        ]
-    },
-    {
-        "id": "ebe565afe5970103",
-        "type": "inject",
-        "z": "c447761f81aaafa4",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 300,
-        "y": 640,
-        "wires": [
-            [
-                "922af606225abba3"
             ]
         ]
     },
@@ -1288,6 +1217,25 @@
         ]
     },
     {
+        "id": "083386f55e0c3401",
+        "type": "function",
+        "z": "c447761f81aaafa4",
+        "name": "function 6",
+        "func": "msg.payload = null;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 240,
+        "wires": [
+            [
+                "2dc037028b0acf9f"
+            ]
+        ]
+    },
+    {
         "id": "f9000c2593203279",
         "type": "ui_switch",
         "z": "456e81617a2b6cd0",
@@ -1555,8 +1503,8 @@
         "tooltip": "",
         "group": "06600b2f320e273d",
         "order": 8,
-        "width": 0,
-        "height": 0,
+        "width": "0",
+        "height": "0",
         "passthru": true,
         "decouple": "false",
         "topic": "topic",
@@ -1767,8 +1715,8 @@
         "z": "456e81617a2b6cd0",
         "group": "06600b2f320e273d",
         "order": 9,
-        "width": 0,
-        "height": 0,
+        "width": "5",
+        "height": "1",
         "name": "",
         "label": "Coils",
         "format": "{{msg.payload}}",
@@ -1808,6 +1756,251 @@
         "statusType": "auto",
         "x": 760,
         "y": 180,
+        "wires": []
+    },
+    {
+        "id": "6f7d4d18c15a8841",
+        "type": "ui_text_input",
+        "z": "456e81617a2b6cd0",
+        "name": "",
+        "label": "Enter Value",
+        "tooltip": "Insert value and press ENTER to submit",
+        "group": "e4daa17e42e78a82",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "text",
+        "delay": "0",
+        "topic": "textInput",
+        "sendOnBlur": false,
+        "className": "",
+        "topicType": "str",
+        "x": 570,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "309c427af4452b8e",
+        "type": "modbus-write",
+        "z": "456e81617a2b6cd0",
+        "name": "Modbus Write Holding Reg 3",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "3",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 1060,
+        "y": 780,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "6d374246aae3d965",
+        "type": "modbus-write",
+        "z": "456e81617a2b6cd0",
+        "name": "Modbus Write Holding Reg 4",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "4",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 1060,
+        "y": 840,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "8f22fca76887896b",
+        "type": "modbus-write",
+        "z": "456e81617a2b6cd0",
+        "name": "Modbus Write Holding Reg 5",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "5",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 1060,
+        "y": 900,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "75fd7b541b380b2d",
+        "type": "switch",
+        "z": "456e81617a2b6cd0",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "num"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 770,
+        "y": 840,
+        "wires": [
+            [
+                "309c427af4452b8e"
+            ],
+            [
+                "6d374246aae3d965"
+            ],
+            [
+                "8f22fca76887896b"
+            ]
+        ]
+    },
+    {
+        "id": "563e8b8a6ece63b7",
+        "type": "ui_dropdown",
+        "z": "456e81617a2b6cd0",
+        "name": "",
+        "label": "",
+        "tooltip": "Select which register you want to write to",
+        "place": "Select Register",
+        "group": "e4daa17e42e78a82",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "3",
+                "value": "3",
+                "type": "str"
+            },
+            {
+                "label": "4",
+                "value": "4",
+                "type": "str"
+            },
+            {
+                "label": "5",
+                "value": "5",
+                "type": "str"
+            },
+            {
+                "label": "6",
+                "value": "6",
+                "type": "str"
+            },
+            {
+                "label": "7",
+                "value": "7",
+                "type": "str"
+            },
+            {
+                "label": "8",
+                "value": "8",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "regSel",
+        "topicType": "str",
+        "className": "",
+        "x": 560,
+        "y": 600,
+        "wires": [
+            [
+                "d2feae388c4176e2"
+            ]
+        ]
+    },
+    {
+        "id": "f44fbee719c56d33",
+        "type": "ui_template",
+        "z": "456e81617a2b6cd0",
+        "group": "e4daa17e42e78a82",
+        "name": "Page Got Loaded",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "format": "<script>\n(function() {\n    (function(scope) {\n        scope.send({payload: \"preload\"}); // this gets sent when the view is opened in the browser\n    })(scope);\n})();\n</script>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 150,
+        "y": 540,
+        "wires": [
+            [
+                "417d6c4cbca2c3f2"
+            ]
+        ]
+    },
+    {
+        "id": "417d6c4cbca2c3f2",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "function 5",
+        "func": "msg.payload = null;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 540,
+        "wires": [
+            [
+                "6f7d4d18c15a8841",
+                "563e8b8a6ece63b7"
+            ]
+        ]
+    },
+    {
+        "id": "d2feae388c4176e2",
+        "type": "debug",
+        "z": "456e81617a2b6cd0",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 700,
         "wires": []
     }
 ]
