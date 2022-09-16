@@ -247,7 +247,7 @@
     {
         "id": "e4daa17e42e78a82",
         "type": "ui_group",
-        "name": "Write Holding register:",
+        "name": "Write data to Holding registers:",
         "tab": "251b81ee7792cb7d",
         "order": 2,
         "disp": true,
@@ -389,7 +389,7 @@
         "showStatusActivities": false,
         "logIOActivities": false,
         "showErrors": false,
-        "unitid": "modbus-sim",
+        "unitid": "1",
         "dataType": "HoldingRegister",
         "adr": "0",
         "quantity": "16",
@@ -438,7 +438,7 @@
         "showStatusActivities": false,
         "logIOActivities": false,
         "showErrors": false,
-        "unitid": "modbus-sim",
+        "unitid": "1",
         "dataType": "Coil",
         "adr": "0",
         "quantity": "16",
@@ -487,7 +487,7 @@
         "showStatusActivities": false,
         "logIOActivities": false,
         "showErrors": false,
-        "unitid": "modbus-sim",
+        "unitid": "1",
         "dataType": "InputRegister",
         "adr": "0",
         "quantity": "16",
@@ -536,7 +536,7 @@
         "showStatusActivities": false,
         "logIOActivities": false,
         "showErrors": false,
-        "unitid": "modbus-sim",
+        "unitid": "1",
         "dataType": "Input",
         "adr": "0",
         "quantity": "16",
@@ -697,6 +697,30 @@
         "x": 1160,
         "y": 280,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f923a06d6daec5d9",
+        "type": "modbus-getter",
+        "z": "6ad5b9fd60cc0a30",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "unitid": "",
+        "dataType": "",
+        "adr": "",
+        "quantity": "",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 220,
+        "y": 460,
+        "wires": [
+            [],
             []
         ]
     },
@@ -1246,8 +1270,8 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "passthru": true,
-        "decouple": "false",
+        "passthru": false,
+        "decouple": "true",
         "topic": "topic",
         "topicType": "msg",
         "style": "",
@@ -1261,8 +1285,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 130,
-        "y": 40,
+        "x": 1090,
+        "y": 140,
         "wires": [
             [
                 "421ce07747783644"
@@ -1278,13 +1302,13 @@
         "showErrors": false,
         "unitid": "1",
         "dataType": "Coil",
-        "adr": "0x01",
+        "adr": "1",
         "quantity": "1",
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 330,
-        "y": 100,
+        "x": 1290,
+        "y": 200,
         "wires": [
             [],
             []
@@ -1301,8 +1325,8 @@
         "order": 2,
         "width": 0,
         "height": 0,
-        "passthru": true,
-        "decouple": "false",
+        "passthru": false,
+        "decouple": "true",
         "topic": "topic",
         "topicType": "msg",
         "style": "",
@@ -1316,8 +1340,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 130,
-        "y": 100,
+        "x": 1090,
+        "y": 200,
         "wires": [
             [
                 "76958490c2aa0f4f"
@@ -1335,8 +1359,8 @@
         "order": 3,
         "width": 0,
         "height": 0,
-        "passthru": true,
-        "decouple": "false",
+        "passthru": false,
+        "decouple": "true",
         "topic": "topic",
         "topicType": "msg",
         "style": "",
@@ -1350,8 +1374,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 130,
-        "y": 160,
+        "x": 1090,
+        "y": 260,
         "wires": [
             [
                 "5a83acc16952bbf7"
@@ -1369,8 +1393,8 @@
         "order": 4,
         "width": 0,
         "height": 0,
-        "passthru": true,
-        "decouple": "false",
+        "passthru": false,
+        "decouple": "true",
         "topic": "topic",
         "topicType": "msg",
         "style": "",
@@ -1384,8 +1408,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 130,
-        "y": 220,
+        "x": 1090,
+        "y": 320,
         "wires": [
             [
                 "c4d36658683d0427"
@@ -1403,8 +1427,8 @@
         "order": 5,
         "width": 0,
         "height": 0,
-        "passthru": true,
-        "decouple": "false",
+        "passthru": false,
+        "decouple": "true",
         "topic": "topic",
         "topicType": "msg",
         "style": "",
@@ -1418,8 +1442,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 130,
-        "y": 280,
+        "x": 1090,
+        "y": 380,
         "wires": [
             [
                 "48f3b04f47e49f60"
@@ -1437,8 +1461,8 @@
         "order": 6,
         "width": 0,
         "height": 0,
-        "passthru": true,
-        "decouple": "false",
+        "passthru": false,
+        "decouple": "true",
         "topic": "topic",
         "topicType": "msg",
         "style": "",
@@ -1452,8 +1476,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 130,
-        "y": 340,
+        "x": 1090,
+        "y": 440,
         "wires": [
             [
                 "cd3a876d41863a39"
@@ -1471,8 +1495,8 @@
         "order": 7,
         "width": 0,
         "height": 0,
-        "passthru": true,
-        "decouple": "false",
+        "passthru": false,
+        "decouple": "true",
         "topic": "topic",
         "topicType": "msg",
         "style": "",
@@ -1486,8 +1510,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 130,
-        "y": 400,
+        "x": 1090,
+        "y": 500,
         "wires": [
             [
                 "85c9268a21732cf2"
@@ -1505,8 +1529,8 @@
         "order": 8,
         "width": "0",
         "height": "0",
-        "passthru": true,
-        "decouple": "false",
+        "passthru": false,
+        "decouple": "true",
         "topic": "topic",
         "topicType": "msg",
         "style": "",
@@ -1520,8 +1544,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 130,
-        "y": 460,
+        "x": 1090,
+        "y": 560,
         "wires": [
             [
                 "6486215d6ab82bdf"
@@ -1537,13 +1561,13 @@
         "showErrors": false,
         "unitid": "1",
         "dataType": "Coil",
-        "adr": "0x02",
+        "adr": "2",
         "quantity": "1",
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 330,
-        "y": 160,
+        "x": 1290,
+        "y": 260,
         "wires": [
             [],
             []
@@ -1558,13 +1582,13 @@
         "showErrors": false,
         "unitid": "1",
         "dataType": "Coil",
-        "adr": "0x03",
+        "adr": "3",
         "quantity": "1",
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 330,
-        "y": 220,
+        "x": 1290,
+        "y": 320,
         "wires": [
             [],
             []
@@ -1579,13 +1603,13 @@
         "showErrors": false,
         "unitid": "1",
         "dataType": "Coil",
-        "adr": "0x04",
+        "adr": "4",
         "quantity": "1",
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 330,
-        "y": 280,
+        "x": 1290,
+        "y": 380,
         "wires": [
             [],
             []
@@ -1600,13 +1624,13 @@
         "showErrors": false,
         "unitid": "1",
         "dataType": "Coil",
-        "adr": "0x05",
+        "adr": "5",
         "quantity": "1",
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 330,
-        "y": 340,
+        "x": 1290,
+        "y": 440,
         "wires": [
             [],
             []
@@ -1621,13 +1645,13 @@
         "showErrors": false,
         "unitid": "1",
         "dataType": "Coil",
-        "adr": "0x06",
+        "adr": "6",
         "quantity": "1",
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 330,
-        "y": 400,
+        "x": 1290,
+        "y": 500,
         "wires": [
             [],
             []
@@ -1642,13 +1666,13 @@
         "showErrors": false,
         "unitid": "1",
         "dataType": "Coil",
-        "adr": "0x07",
+        "adr": "7",
         "quantity": "1",
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 330,
-        "y": 460,
+        "x": 1290,
+        "y": 560,
         "wires": [
             [],
             []
@@ -1663,107 +1687,24 @@
         "showErrors": false,
         "unitid": "1",
         "dataType": "Coil",
-        "adr": "0x00",
+        "adr": "0",
         "quantity": "1",
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 330,
-        "y": 40,
+        "x": 1290,
+        "y": 140,
         "wires": [
             [],
             []
         ]
     },
     {
-        "id": "ba31183c9549cb95",
-        "type": "modbus-read",
-        "z": "456e81617a2b6cd0",
-        "name": "modbus-read-coil-1",
-        "topic": "",
-        "showStatusActivities": true,
-        "logIOActivities": false,
-        "showErrors": true,
-        "unitid": "http://localhost:1880/#modbus-options-tab",
-        "dataType": "Coil",
-        "adr": "0",
-        "quantity": "8",
-        "rate": "100",
-        "rateUnit": "ms",
-        "delayOnStart": false,
-        "startDelayTime": "5",
-        "server": "7e05ac45fab33178",
-        "useIOFile": false,
-        "ioFile": "",
-        "useIOForPayload": false,
-        "emptyMsgOnFail": true,
-        "x": 590,
-        "y": 40,
-        "wires": [
-            [
-                "5ad934c61c41d563",
-                "500232bffed99cd6"
-            ],
-            [
-                "378c936ede01d57b"
-            ]
-        ]
-    },
-    {
-        "id": "5ad934c61c41d563",
-        "type": "ui_text",
-        "z": "456e81617a2b6cd0",
-        "group": "06600b2f320e273d",
-        "order": 9,
-        "width": "5",
-        "height": "1",
-        "name": "",
-        "label": "Coils",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 770,
-        "y": 40,
-        "wires": []
-    },
-    {
-        "id": "500232bffed99cd6",
-        "type": "debug",
-        "z": "456e81617a2b6cd0",
-        "name": "debug 3",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 760,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "378c936ede01d57b",
-        "type": "debug",
-        "z": "456e81617a2b6cd0",
-        "name": "debug 4",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 760,
-        "y": 180,
-        "wires": []
-    },
-    {
         "id": "6f7d4d18c15a8841",
         "type": "ui_text_input",
         "z": "456e81617a2b6cd0",
         "name": "",
-        "label": "Enter Value",
+        "label": "Enter Value to Write",
         "tooltip": "Insert value and press ENTER to submit",
         "group": "e4daa17e42e78a82",
         "order": 0,
@@ -1776,11 +1717,11 @@
         "sendOnBlur": false,
         "className": "",
         "topicType": "str",
-        "x": 570,
-        "y": 500,
+        "x": 1060,
+        "y": 760,
         "wires": [
             [
-                "e470cd67b8c4f773"
+                "d2feae388c4176e2"
             ]
         ]
     },
@@ -1798,8 +1739,8 @@
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 1060,
-        "y": 780,
+        "x": 2020,
+        "y": 880,
         "wires": [
             [],
             []
@@ -1819,8 +1760,8 @@
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 1060,
-        "y": 840,
+        "x": 2020,
+        "y": 940,
         "wires": [
             [],
             []
@@ -1840,8 +1781,8 @@
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 1060,
-        "y": 900,
+        "x": 2020,
+        "y": 1000,
         "wires": [
             [],
             []
@@ -1852,7 +1793,7 @@
         "type": "switch",
         "z": "456e81617a2b6cd0",
         "name": "",
-        "property": "topic",
+        "property": "textValue",
         "propertyType": "msg",
         "rules": [
             {
@@ -1874,8 +1815,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 770,
-        "y": 840,
+        "x": 1730,
+        "y": 940,
         "wires": [
             [
                 "309c427af4452b8e"
@@ -1895,7 +1836,7 @@
         "name": "",
         "label": "",
         "tooltip": "Select which register you want to write to",
-        "place": "Select Register",
+        "place": "Select Holding Register",
         "group": "e4daa17e42e78a82",
         "order": 9,
         "width": 0,
@@ -1938,11 +1879,11 @@
         "topic": "regSel",
         "topicType": "str",
         "className": "",
-        "x": 560,
-        "y": 600,
+        "x": 1020,
+        "y": 860,
         "wires": [
             [
-                "d2feae388c4176e2"
+                "a9073075d2b2e28d"
             ]
         ]
     },
@@ -1961,8 +1902,8 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 150,
-        "y": 540,
+        "x": 550,
+        "y": 800,
         "wires": [
             [
                 "417d6c4cbca2c3f2"
@@ -1980,8 +1921,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 340,
-        "y": 540,
+        "x": 800,
+        "y": 800,
         "wires": [
             [
                 "6f7d4d18c15a8841",
@@ -1993,32 +1934,678 @@
         "id": "d2feae388c4176e2",
         "type": "debug",
         "z": "456e81617a2b6cd0",
-        "name": "debug 9",
+        "name": "text input",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 700,
-        "y": 700,
+        "x": 1260,
+        "y": 720,
         "wires": []
     },
     {
-        "id": "e470cd67b8c4f773",
+        "id": "cf37fbf2eb92ac2c",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "function 7",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1600,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5429c4cd53c77950",
+        "type": "modbus-read",
+        "z": "456e81617a2b6cd0",
+        "name": "modbus-read-coil0",
+        "topic": "",
+        "showStatusActivities": false,
+        "logIOActivities": false,
+        "showErrors": false,
+        "unitid": "modbus-sim",
+        "dataType": "Coil",
+        "adr": "0",
+        "quantity": "1",
+        "rate": "100",
+        "rateUnit": "ms",
+        "delayOnStart": true,
+        "startDelayTime": "2",
+        "server": "7e05ac45fab33178",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 310,
+        "y": 140,
+        "wires": [
+            [
+                "f3eae3fadc6292b0",
+                "0cca438307889d6c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "387f24a9fe2c0e72",
+        "type": "change",
+        "z": "456e81617a2b6cd0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "state",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 260,
+        "wires": [
+            [
+                "fe3fd102936d3c48"
+            ]
+        ]
+    },
+    {
+        "id": "5ce560788309eea7",
+        "type": "change",
+        "z": "456e81617a2b6cd0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "state",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 320,
+        "wires": [
+            [
+                "14c8a984854692fd"
+            ]
+        ]
+    },
+    {
+        "id": "e51807a760b9b76b",
+        "type": "change",
+        "z": "456e81617a2b6cd0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "state",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 380,
+        "wires": [
+            [
+                "1c1d8e1305900b3d"
+            ]
+        ]
+    },
+    {
+        "id": "e4739af02a84db44",
+        "type": "change",
+        "z": "456e81617a2b6cd0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "state",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 440,
+        "wires": [
+            [
+                "153dc8f2b1b8753b"
+            ]
+        ]
+    },
+    {
+        "id": "6001e6f66b433fd2",
+        "type": "change",
+        "z": "456e81617a2b6cd0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "state",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 500,
+        "wires": [
+            [
+                "fbf8e73183264720"
+            ]
+        ]
+    },
+    {
+        "id": "d04f4f27580b0517",
+        "type": "change",
+        "z": "456e81617a2b6cd0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "state",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 560,
+        "wires": [
+            [
+                "276a3a074d43fcb3"
+            ]
+        ]
+    },
+    {
+        "id": "0243f194fc417b6f",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "return coil2",
+        "func": "msg.state=msg.payload[0]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 260,
+        "wires": [
+            [
+                "387f24a9fe2c0e72"
+            ]
+        ]
+    },
+    {
+        "id": "5f57af860d9601b6",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "return coil3",
+        "func": "msg.state=msg.payload[0]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 320,
+        "wires": [
+            [
+                "5ce560788309eea7"
+            ]
+        ]
+    },
+    {
+        "id": "134ec528ecd9c1b0",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "return coil4",
+        "func": "msg.state=msg.payload[0]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 380,
+        "wires": [
+            [
+                "e51807a760b9b76b"
+            ]
+        ]
+    },
+    {
+        "id": "bef79ef43342181f",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "return coil5",
+        "func": "msg.state=msg.payload[0]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 440,
+        "wires": [
+            [
+                "e4739af02a84db44"
+            ]
+        ]
+    },
+    {
+        "id": "bd0de0679a7c3654",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "return coil6",
+        "func": "msg.state=msg.payload[0]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 500,
+        "wires": [
+            [
+                "6001e6f66b433fd2"
+            ]
+        ]
+    },
+    {
+        "id": "cc5aaf7aa553a434",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "return coil7",
+        "func": "msg.state=msg.payload[0]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 560,
+        "wires": [
+            [
+                "d04f4f27580b0517"
+            ]
+        ]
+    },
+    {
+        "id": "53c3a6960e7028a2",
+        "type": "change",
+        "z": "456e81617a2b6cd0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "state",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 200,
+        "wires": [
+            [
+                "d01d10c5d069c9d5"
+            ]
+        ]
+    },
+    {
+        "id": "2143e6bac165c11e",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "return coil1",
+        "func": "msg.state=msg.payload[0]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 200,
+        "wires": [
+            [
+                "53c3a6960e7028a2"
+            ]
+        ]
+    },
+    {
+        "id": "55b4f32e448e2135",
+        "type": "change",
+        "z": "456e81617a2b6cd0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "state",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 140,
+        "wires": [
+            [
+                "f9000c2593203279"
+            ]
+        ]
+    },
+    {
+        "id": "f3eae3fadc6292b0",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "return coil0",
+        "func": "msg.state=msg.payload[0]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 140,
+        "wires": [
+            [
+                "55b4f32e448e2135"
+            ]
+        ]
+    },
+    {
+        "id": "f9f1d8457f20e19e",
         "type": "debug",
         "z": "456e81617a2b6cd0",
         "name": "debug 10",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 740,
-        "y": 420,
+        "x": 920,
+        "y": 80,
         "wires": []
+    },
+    {
+        "id": "a2560676cdb9c5e3",
+        "type": "debug",
+        "z": "456e81617a2b6cd0",
+        "name": "debug 11",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "a9073075d2b2e28d",
+        "type": "debug",
+        "z": "456e81617a2b6cd0",
+        "name": "dropdown selection",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1230,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "0cca438307889d6c",
+        "type": "modbus-getter",
+        "z": "456e81617a2b6cd0",
+        "name": "modbus-read-coil1",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "Coil",
+        "adr": "0x01",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 310,
+        "y": 200,
+        "wires": [
+            [
+                "2143e6bac165c11e",
+                "b2cc6fb0a8919f42"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "b2cc6fb0a8919f42",
+        "type": "modbus-getter",
+        "z": "456e81617a2b6cd0",
+        "name": "modbus-read-coil2",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "Coil",
+        "adr": "0x02",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "2b1a213144b30974",
+                "0243f194fc417b6f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2b1a213144b30974",
+        "type": "modbus-getter",
+        "z": "456e81617a2b6cd0",
+        "name": "modbus-read-coil3",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "Coil",
+        "adr": "0x03",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 310,
+        "y": 320,
+        "wires": [
+            [
+                "d89f75b37742d141",
+                "5f57af860d9601b6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d89f75b37742d141",
+        "type": "modbus-getter",
+        "z": "456e81617a2b6cd0",
+        "name": "modbus-read-coil4",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "Coil",
+        "adr": "0x04",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 310,
+        "y": 380,
+        "wires": [
+            [
+                "4b1853bf7c988063",
+                "134ec528ecd9c1b0"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "4b1853bf7c988063",
+        "type": "modbus-getter",
+        "z": "456e81617a2b6cd0",
+        "name": "modbus-read-coil5",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "Coil",
+        "adr": "0x05",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 310,
+        "y": 440,
+        "wires": [
+            [
+                "b81d6eb416e829b5",
+                "bef79ef43342181f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "b81d6eb416e829b5",
+        "type": "modbus-getter",
+        "z": "456e81617a2b6cd0",
+        "name": "modbus-read-coil6",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "Coil",
+        "adr": "0x06",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 310,
+        "y": 500,
+        "wires": [
+            [
+                "cb138265efab1c45",
+                "bd0de0679a7c3654"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "cb138265efab1c45",
+        "type": "modbus-getter",
+        "z": "456e81617a2b6cd0",
+        "name": "modbus-read-coil7",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "Coil",
+        "adr": "0x07",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 310,
+        "y": 560,
+        "wires": [
+            [
+                "cc5aaf7aa553a434"
+            ],
+            []
+        ]
     }
 ]
