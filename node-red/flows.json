@@ -271,6 +271,17 @@
         "icon": "dashboard"
     },
     {
+        "id": "1c2f60c6c9e35c53",
+        "type": "ui_group",
+        "name": "Holding registers data",
+        "tab": "251b81ee7792cb7d",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "a95b4ea959a4e186",
         "type": "ui_button",
         "z": "18243aa4f20abaa8",
@@ -423,7 +434,8 @@
             [
                 "310da4d40d867481",
                 "29372c6f0912a929",
-                "f923a06d6daec5d9"
+                "f923a06d6daec5d9",
+                "a83723ee6d9d8bd3"
             ],
             []
         ]
@@ -705,6 +717,23 @@
             ],
             []
         ]
+    },
+    {
+        "id": "a83723ee6d9d8bd3",
+        "type": "ui_text",
+        "z": "6ad5b9fd60cc0a30",
+        "group": "1c2f60c6c9e35c53",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Holding Registers Data:",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 630,
+        "y": 460,
+        "wires": []
     },
     {
         "id": "5d3cf572bfff4da7",
@@ -1692,7 +1721,7 @@
         "passthru": false,
         "mode": "number",
         "delay": "0",
-        "topic": "textInput",
+        "topic": "numberIn",
         "sendOnBlur": false,
         "className": "",
         "topicType": "str",
@@ -1719,7 +1748,7 @@
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 2140,
+        "x": 2340,
         "y": 840,
         "wires": [
             [],
@@ -1740,7 +1769,7 @@
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 2140,
+        "x": 2340,
         "y": 900,
         "wires": [
             [],
@@ -1761,46 +1790,9 @@
         "server": "7e05ac45fab33178",
         "emptyMsgOnFail": false,
         "keepMsgProperties": false,
-        "x": 2140,
+        "x": 2340,
         "y": 960,
         "wires": [
-            [],
-            []
-        ]
-    },
-    {
-        "id": "75fd7b541b380b2d",
-        "type": "switch",
-        "z": "456e81617a2b6cd0",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "5",
-                "vt": "num"
-            }
-        ],
-        "checkall": "false",
-        "repair": false,
-        "outputs": 3,
-        "x": 1730,
-        "y": 940,
-        "wires": [
-            [
-                "fc5b9303adbee1f5"
-            ],
             [],
             []
         ]
@@ -1853,7 +1845,7 @@
         ],
         "payload": "",
         "topic": "regSel",
-        "topicType": "str",
+        "topicType": "msg",
         "className": "",
         "x": 1020,
         "y": 840,
@@ -2541,7 +2533,7 @@
         "type": "function",
         "z": "456e81617a2b6cd0",
         "name": "function 8",
-        "func": "\nif (msg.payload>65535 || msg.payload<0 || (flow.get(\"Selection\")==0))\n    msg.payload=-1;\n    \n\nreturn msg;",
+        "func": "var sel=flow.get(\"Selection\");\nif (msg.payload>65535 || msg.payload<0 || (sel==0))\n    msg.payload=-1;\n    \n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2582,8 +2574,15 @@
         "wires": [
             [
                 "fdfa705105493819",
-                "de955cdf26990a67",
-                "aac660244d66689f"
+                "aac660244d66689f",
+                "0fcd6ecfdc2c032c",
+                "423f68652d670095",
+                "66d09522c8c31c3e",
+                "512f0bd996f33efb",
+                "b3ac0b1837645c39",
+                "8ac0a7ce8abcecf1",
+                "5b97668645f36c14",
+                "24a7696f92f1fb8d"
             ],
             [
                 "417d6c4cbca2c3f2",
@@ -2681,8 +2680,8 @@
         "className": "",
         "topic": "",
         "name": "",
-        "x": 2130,
-        "y": 1120,
+        "x": 1790,
+        "y": 1340,
         "wires": []
     },
     {
@@ -2704,8 +2703,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1870,
-        "y": 1120,
+        "x": 1510,
+        "y": 1340,
         "wires": [
             [
                 "b5fc4c4625ad8ce2",
@@ -2718,7 +2717,7 @@
         "type": "function",
         "z": "456e81617a2b6cd0",
         "name": "function 9",
-        "func": "flow.set(\"Selection\",msg.regSel);\nreturn msg;",
+        "func": "flow.set(\"Selection\",msg.payload);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2727,7 +2726,9 @@
         "x": 1240,
         "y": 840,
         "wires": [
-            []
+            [
+                "776af6f4b9764f68"
+            ]
         ]
     },
     {
@@ -2747,8 +2748,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1880,
-        "y": 1220,
+        "x": 1520,
+        "y": 1440,
         "wires": [
             [
                 "417d6c4cbca2c3f2"
@@ -2756,41 +2757,20 @@
         ]
     },
     {
-        "id": "de955cdf26990a67",
-        "type": "function",
-        "z": "456e81617a2b6cd0",
-        "name": "function 10",
-        "func": "flow.set(\"data\",msg.payload);\nmsg.payload = flow.get(\"Selection\");\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1550,
-        "y": 940,
-        "wires": [
-            [
-                "75fd7b541b380b2d",
-                "0fcd6ecfdc2c032c",
-                "423f68652d670095"
-            ]
-        ]
-    },
-    {
         "id": "aac660244d66689f",
         "type": "debug",
         "z": "456e81617a2b6cd0",
-        "name": "debug 11",
-        "active": true,
+        "name": "filtered output",
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1760,
-        "y": 740,
+        "x": 1600,
+        "y": 760,
         "wires": []
     },
     {
@@ -2798,16 +2778,16 @@
         "type": "debug",
         "z": "456e81617a2b6cd0",
         "name": "debug 12",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "$flowContext(\"Selection\")",
+        "targetType": "jsonata",
         "statusVal": "",
         "statusType": "auto",
         "x": 1940,
-        "y": 600,
+        "y": 720,
         "wires": []
     },
     {
@@ -2819,30 +2799,256 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "",
-        "format": "{{msg.topic}}",
+        "label": "Last Written Value:",
+        "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 2010,
-        "y": 720,
+        "x": 1930,
+        "y": 680,
         "wires": []
     },
     {
-        "id": "fc5b9303adbee1f5",
+        "id": "66d09522c8c31c3e",
         "type": "function",
         "z": "456e81617a2b6cd0",
-        "name": "function 11",
-        "func": "msg.payload=flow.get(\"data\");\nreturn msg;",
+        "name": "function 10",
+        "func": "var sel = flow.get(\"Selection\");\n\nif (sel == 3){\n    return msg;\n} \n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1870,
-        "y": 860,
+        "x": 2010,
+        "y": 840,
         "wires": [
             [
+                "7b8ab1312a502869",
                 "309c427af4452b8e"
+            ]
+        ]
+    },
+    {
+        "id": "776af6f4b9764f68",
+        "type": "debug",
+        "z": "456e81617a2b6cd0",
+        "name": "debug 14",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1580,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "512f0bd996f33efb",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "function 11",
+        "func": "var sel = flow.get(\"Selection\");\n\nif (sel == 4) {\n    return msg;\n}\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2010,
+        "y": 900,
+        "wires": [
+            [
+                "7f132a9da208a56e",
+                "6d374246aae3d965"
+            ]
+        ]
+    },
+    {
+        "id": "b3ac0b1837645c39",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "function 12",
+        "func": "var sel = flow.get(\"Selection\");\n\nif (sel == 5) {\n    return msg;\n}\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2010,
+        "y": 960,
+        "wires": [
+            [
+                "c04065db9d1d714d",
+                "8f22fca76887896b"
+            ]
+        ]
+    },
+    {
+        "id": "7b8ab1312a502869",
+        "type": "debug",
+        "z": "456e81617a2b6cd0",
+        "name": "debug 15",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2280,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "7f132a9da208a56e",
+        "type": "debug",
+        "z": "456e81617a2b6cd0",
+        "name": "debug 16",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2280,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "c04065db9d1d714d",
+        "type": "debug",
+        "z": "456e81617a2b6cd0",
+        "name": "debug 17",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2280,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "8998f11aee9307ad",
+        "type": "modbus-write",
+        "z": "456e81617a2b6cd0",
+        "name": "Modbus Write Holding Reg 6",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "6",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 2340,
+        "y": 1020,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "902a3f86fc85f20c",
+        "type": "modbus-write",
+        "z": "456e81617a2b6cd0",
+        "name": "Modbus Write Holding Reg 7",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "7",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 2340,
+        "y": 1080,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e0de165d820eee16",
+        "type": "modbus-write",
+        "z": "456e81617a2b6cd0",
+        "name": "Modbus Write Holding Reg 8",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "8",
+        "quantity": "1",
+        "server": "7e05ac45fab33178",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 2340,
+        "y": 1140,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "8ac0a7ce8abcecf1",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "function 13",
+        "func": "var sel = flow.get(\"Selection\");\n\nif (sel == 6){\n    return msg;\n} \n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2010,
+        "y": 1020,
+        "wires": [
+            [
+                "8998f11aee9307ad"
+            ]
+        ]
+    },
+    {
+        "id": "5b97668645f36c14",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "function 14",
+        "func": "var sel = flow.get(\"Selection\");\n\nif (sel == 7) {\n    return msg;\n}\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2010,
+        "y": 1080,
+        "wires": [
+            [
+                "902a3f86fc85f20c"
+            ]
+        ]
+    },
+    {
+        "id": "24a7696f92f1fb8d",
+        "type": "function",
+        "z": "456e81617a2b6cd0",
+        "name": "function 15",
+        "func": "var sel = flow.get(\"Selection\");\n\nif (sel == 8) {\n    return msg;\n}\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2010,
+        "y": 1140,
+        "wires": [
+            [
+                "e0de165d820eee16"
             ]
         ]
     }
