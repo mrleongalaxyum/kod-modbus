@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -36,33 +36,68 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "continuous-GrYlRd"
           },
-          "decimals": 0,
-          "displayName": "Voltage",
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 3,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
           "mappings": [],
-          "max": 250,
-          "min": 180,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "green",
-                "value": 200
-              },
-              {
-                "color": "semi-dark-red",
-                "value": 240
+                "color": "red",
+                "value": 80
               }
             ]
           },
           "unit": "volt"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "0 {dataType=\"holding-\", deviceId=\"modbus-sim-1\", location=\"kod\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Voltage"
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 9,
@@ -72,16 +107,16 @@
       },
       "id": 2,
       "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
         },
-        "showThresholdLabels": true,
-        "showThresholdMarkers": true
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
       "pluginVersion": "9.1.3",
       "targets": [
@@ -95,7 +130,7 @@
         }
       ],
       "title": "Voltage",
-      "type": "gauge"
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -150,9 +185,23 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "mamp"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "1 {dataType=\"holding-\", deviceId=\"modbus-sim-1\", location=\"kod\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Current"
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -160,7 +209,7 @@
         "x": 0,
         "y": 9
       },
-      "id": 4,
+      "id": 1,
       "options": {
         "legend": {
           "calcs": [],
@@ -188,7 +237,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "5s",
+  "refresh": "100ms",
   "schemaVersion": 37,
   "style": "dark",
   "tags": [],
@@ -201,6 +250,10 @@
   },
   "timepicker": {
     "refresh_intervals": [
+      "100ms",
+      "250ms",
+      "500ms",
+      "1s",
       "5s",
       "30s",
       "1m",
@@ -213,8 +266,8 @@
     ]
   },
   "timezone": "",
-  "title": "modbus-data",
-  "uid": "H3iLFJM4k",
-  "version": 9,
+  "title": "modbus-data Copy",
+  "uid": "gvF9N07Vk",
+  "version": 1,
   "weekStart": ""
 }

@@ -9,7 +9,7 @@ currentRegister = 1
 num = 0
 wVolts = random.randint(220, 240)
 wAmps = random.randint(0, 1000)
-client = ModbusTcpClient('127.0.0.1', 5020)
+client = ModbusTcpClient('modbus', 5020)
 
 
 def writeVoltage(voltage):
