@@ -31,58 +31,47 @@ Aforementioned microservices all run inside their own Docker containers. If inte
 read more about Docker at the `Docker website <docker_container_>`_.
 
 
-Creating a Dockerfile
----------------------
 
-The first step towards building our project with Docker is to create an image. This image defines what we need
-to build our project. See the `Docker docs <images_>`_.
 
-The standard name for a Docker file is ``Dockerfile`` (genius stuff).
-
-Choosing the base image
+Setup
 +++++++++++++++++++++++
+1. Download the repo zip and unpack it in a convenient location 
+2. A few slight modifications are needed in the docker-compose.yaml:
 
-As mentioned earlier, we must choose the operating system first. There are many images for various operating
-systems on `Docker Hub <https://hub.docker.com/search?q=linux&type=image>`_. These are called base images,
-because they are the starting point of any Docker image.
+at line 20:
 
-We could install any of these images, and then install what we need, such as Python and our dependencies.
-This is a task that all Python developers perform often, so in order to speed up the process,
-the Python foundation already provides many images that contain Python. See the `list of images
-<https://hub.docker.com/_/python>`_.
+.. code-block:: docker
+     
+  volumes:
+        - /home/leon/dockeri/kod-modbus/modbus-server/server_config.json:/server_config.json:ro
 
-Let's pick a Python version, we want to use **Python 3.8.2**. This is somewhat arbitrary and more importantly, it is
-used in our `Pipfile`_, so we have to match this version for coherence purposes.
+at lines 46 & 47:
 
-The second choice is the type of Python image. As you can see, there are Buster images, Alpine images, and more.
-These are different versions of Linux. Python cannot run on its own, it must run on an operating system so
-these Python images are also based on other images (the Linux images).
+.. code-block:: docker
 
-To keep the choice simple, it's `good practice <article_>`_ to use the smallest image possible. Let's choose
-``3.8.2-slim-buster``. It's a standard choice for a lot of Python projects and a rather lightweight image
-that contains most of what we need.
+  volumes:
+      - /home/leon/dockeri/kod-modbus/grafana/storage:/var/lib/grafana
+      - /home/leon/dockeri/kod-modbus/grafana/provisioning/:/etc/grafana/provisioning
 
-To use it in our Dockerfile, we simply write:
+and at line 69:
 
-.. code-block:: bash
+.. code-block:: docker
 
-   FROM python:3.8-slim-buster
+    volumes:
+        - /home/leon/dockeri/kod-modbus/node-red:/data
 
+Edit those parts to match the path of your downloaded root folder. 
 
-Installing the dependencies
+Install Docker Engine
 +++++++++++++++++++++++++++
 
-We have a base image that runs Python on Linux (Debian). We can add our dependencies.
+After editing the docker-compose file, if not already installed, Docker Engine shall be installed. Instructions on how to do this can be found `here <https://docs.docker.com/engine/install/>`_
 
-This is a more complicated step as we need to understand what's in the base image, and what's not.
-In our case:
 
-- we need everything from our `Pipfile <pipfile_>`_, so we install ``pipenv``.
-- we want to use our `Makefile <makefile_>`_  to build the docs, so we install ``make``.
+Spooling up the containers
++++++++++++++++++++++++++++
 
-It's also good practice to install security updates and also get rid of cached files.
-
-To do this, we use:
+If needed, user can change credentials for accessing Grafana and InfluxDB admin interfaces. this can be done by editing the .env file inside docker-compose-files folder
 
 .. code-block:: bash
 
