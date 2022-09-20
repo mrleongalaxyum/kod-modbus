@@ -35,7 +35,8 @@ read more about Docker at the `Docker website <docker_container_>`_.
 
 Setup
 +++++++++++++++++++++++
-1. Download the repo zip and unpack it in a convenient location 
+1. .. image:: https://github.com/mrleongalaxyum/kod-modbus/archive/refs/heads/main.zip
+ and unpack it in a convenient location 
 2. A few slight modifications are needed in the docker-compose.yaml:
 
 at line 20:
@@ -71,7 +72,8 @@ After editing the docker-compose file, if not already installed, Docker Engine s
 Spooling up the containers
 +++++++++++++++++++++++++++
 
-If needed, user can change credentials for accessing Grafana and InfluxDB admin interfaces. this can be done by editing the .env file inside docker-compose-files folder
+If needed, user can change credentials for accessing Grafana and InfluxDB admin interfaces. this can be done by editing the .env file inside `docker-compose-files folder <https://github.com/mrleongalaxyum/kod-modbus/tree/main/docker-compose-files>`_
+
 
 .. code-block:: bash
 
