@@ -73,117 +73,16 @@ Spooling up the containers
 
 If needed, user can change credentials for accessing Grafana and InfluxDB admin interfaces. this can be done by editing the .env file inside `docker-compose-files folder <https://github.com/mrleongalaxyum/kod-modbus/tree/main/docker-compose-files>`_
 
-
-.. code-block:: bash
-
-  RUN apt-get update && \
-    apt-get -y upgrade && \
-    apt-get install -y make && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir pipenv
-
-The ``RUN`` instruction allows us to execute any command. These commands are standard Debian commands
-to install packages.
-
-.. note:: Without getting into too much detail, no caching is needed in a Docker image and the lighter the
-    image the better, so we delete the cache using ``apt-get clean``, ``rm -rf /var/lib/apt/lists/*``, and
-    ``no-cache-dir``.
-
-.. note:: The ``RUN`` (as as all ``COPY`` and ``ADD``) instruction also creates `layers <layers_>`_. It's a
-   topic in itself but Docker recommends to separate installation instructions from what almost never
-   changes, to what changes more often to optimize build times. In your case, we don't need much,
-   and these package never change so they come into the initial RUN instruction.
-
-To modify what's installed in this image, you would typically add package names after ``make``.
-The rest can stay if you require ``pipenv``.
+All that needs to be done now is to open up a terminal, and run the following command:
 
 
-Setting the work directory
-++++++++++++++++++++++++++
+.. code-block:: linux
 
-Our image doesn't contain any of our files at the moment, only Linux and extra packages.
-In the next step, we will copy files from our repository to the image, but now, let's set the working directory
-to the name of the repository.
+   docker compose up
+  
 
-We do this with:
-
-.. code-block:: bash
-
-   WORKDIR /sphinxtechnicalwriting
-
-This folder is now the default path for all the following commands we will run.
-
-Copying files
-+++++++++++++
-
-The objective of the image is to install our project dependencies, they are listed in our Pipfile.
-We have installed Pipenv, so before we can use it to install our dependencies, we must copy our Pipfile and Pipfile.lock files
-to our image. If the image does not contain them, it will not be able to install anything.
-
-We do this with:
-
-.. code-block:: bash
-
-   COPY Pipfile Pipfile.lock /sphinxtechnicalwriting/
-
-Notice that we copy them to our working directory.
-
-Installing the dependencies
-+++++++++++++++++++++++++++
-
-We have copied our dependency list to our image, we can now build them in our image.
-
-We do this with:
-
-.. code-block:: bash
-
-   RUN pipenv install --system --deploy
-
-This command is similar to what we used in :ref:`config-env` but slightly modified for Docker use. It
-doesn't create a virtual environment but installs everything at system level and also install the packages
-from the lock file. See the `Pipenv docs`_.
-
-
-Building the image
-------------------
-
-We have the following Dockerfile:
-
-.. literalinclude:: ../../Dockerfile
-
-To build it, run:
-
-.. code-block:: bash
-
-   docker build -t sphinx_image .
-
-This creates an image named ``sphinx_image``.
+Now the containers should be running and the app should be ready for use!
 
 
 
 
-Next steps
------------
-
-There's no real benefit in using Docker if you've already set up a local environment, but if you haven't
-you can build the docs in 2 commands, which is great:
-
-.. code-block:: bash
-
-   docker build -t sphinx_image .
-   docker run -v $(pwd):/sphinxtechnicalwriting sphinx_image make html
-
-
-You can also use this image in your CI pipeline to get reproducible builds, and speed them up by using a Docker
-image registry.
-
-
-.. _pipenv docs: https://pipenv.pypa.io/en/latest/advanced/#using-pipenv-for-deployments
-.. _layers: https://dzone.com/articles/docker-layers-explained
-.. _makefile: https://github.com/ArtFlag/sphinxtechnicalwriting/blob/master/Makefile
-.. _pipfile: https://github.com/ArtFlag/sphinxtechnicalwriting/blob/master/Pipfile
-.. _docker_container: https://www.docker.com/resources/what-container
-.. _images: https://docs.docker.com/engine/reference/commandline/images/
-.. _article: https://pythonspeed.com/articles/base-image-python-docker-images/
