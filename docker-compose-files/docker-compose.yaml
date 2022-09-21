@@ -59,10 +59,10 @@ services:
     user: "1000"
     
   node-red:
-    image: nodered/node-red:latest
+    image: mrleongalaxyum/nr-kod-modbus
     environment:
       - TZ=Europe/Zagreb
-    restart: always
+    restart: unless-stopped
     ports:
       - "1880:1880"
 
