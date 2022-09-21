@@ -28,7 +28,8 @@ Those services are:
 - Node-RED for processing data, storing it to InfluxDB and allowing user control from a GUI Dashboard
 
 Aforementioned microservices all run inside their own Docker containers. If interested,
-read more about Docker at the `Docker website <docker_container_>`_.
+read more about Docker at the `Docker website <https://www.docker.com/>`_
+.
 
 
 
