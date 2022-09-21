@@ -38,20 +38,20 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Welcome to kod-modbus-app’s documentation!</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
-<li><a class="reference internal" href="#using-docker">Using Docker</a><ul>
-<li><a class="reference internal" href="#creating-a-dockerfile">Creating a Dockerfile</a><ul>
-<li><a class="reference internal" href="#choosing-the-base-image">Choosing the base image</a></li>
-<li><a class="reference internal" href="#installing-the-dependencies">Installing the dependencies</a></li>
-<li><a class="reference internal" href="#setting-the-work-directory">Setting the work directory</a></li>
-<li><a class="reference internal" href="#copying-files">Copying files</a></li>
-<li><a class="reference internal" href="#id1">Installing the dependencies</a></li>
+<li><a class="reference internal" href="#">Welcome to kod-modbus-app’s documentation!</a><ul>
+<li><a class="reference internal" href="#about-the-app">About The App</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+<li><a class="reference internal" href="#install-docker-engine">Install Docker Engine</a></li>
+<li><a class="reference internal" href="#spooling-up-the-containers">Spooling up the containers</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#building-the-image">Building the image</a></li>
-<li><a class="reference internal" href="#using-the-image">Using the image</a></li>
-<li><a class="reference internal" href="#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#services">Services</a><ul>
+<li><a class="reference internal" href="#node-red">Node-RED</a></li>
+<li><a class="reference internal" href="#influxdb">InfluxDB</a></li>
+<li><a class="reference internal" href="#grafana">Grafana</a></li>
+<li><a class="reference internal" href="#python">Python</a></li>
 </ul>
 </li>
 </ul>
@@ -84,167 +84,81 @@
 <h1>Welcome to kod-modbus-app’s documentation!<a class="headerlink" href="#welcome-to-kod-modbus-app-s-documentation" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
-</section>
-<section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<section id="about-the-app">
+<span id="docker"></span><h2>About The App<a class="headerlink" href="#about-the-app" title="Permalink to this heading"></a></h2>
+<p>This app is an integrated, all-in-one, a containerized simple SCADA system over ModBus TCP. It was developed during my student internship at <a class="reference external" href="https://www.koncar.hr/en/business-segments/digital-solutions/koncar-digital/">KONČAR Digital</a></p>
+<p>As it stands, it’s comprised of 4 separate, but integrated, microservices. Everything needed to get this app up and running is located on the project’s <a class="reference external" href="https://github.com/mrleongalaxyum/kod-modbus">GitHub repo</a></p>
+<p>Those services are:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><p>ModBus TCP slave that simulates an end device</p></li>
+<li><p>A python script that writes simulated data into the slave</p></li>
+<li><p>InfluxDB timeseries database for storing states and persistence</p></li>
+<li><p>Grafana for drawing interactive and visually pretty graphs from DB queries</p></li>
+<li><p>Node-RED for processing data, storing it to InfluxDB and allowing user control from a GUI Dashboard</p></li>
 </ul>
-</section>
-<section id="using-docker">
-<span id="docker"></span><h1>Using Docker<a class="headerlink" href="#using-docker" title="Permalink to this heading"></a></h1>
-<p>Docker is a way to make any project easier and potentially faster to build.</p>
-<p>In a nut shell, Docker allows you to build <strong>images</strong>. An image contains everything required by a project,
-typically:</p>
-<ul class="simple">
-<li><p>The operating system, such as Linux.</p></li>
-<li><p>The dependencies, such as Python and sphinx and your sphinx extensions.</p></li>
-<li><p>Your source code (or docs files).</p></li>
-</ul>
-<p>When you run an image, it turns into a virtual machine, called container, in which you can run your app. It might
-sound a bit similar to the virtual environment mentioned in <span class="xref std std-ref">config-env</span>, but it’s completely stand alone.</p>
-<p>It also offers other valuable features of caching/layering that help speed up your builds.
-Read more about its main concepts on the <a class="reference external" href="https://www.docker.com/resources/what-container">Docker website</a>.</p>
-<section id="creating-a-dockerfile">
-<h2>Creating a Dockerfile<a class="headerlink" href="#creating-a-dockerfile" title="Permalink to this heading"></a></h2>
-<p>The first step towards building our project with Docker is to create an image. This image defines what we need
-to build our project. See the <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/images/">Docker docs</a>.</p>
-<p>The standard name for a Docker file is <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> (genius stuff).</p>
-<section id="choosing-the-base-image">
-<h3>Choosing the base image<a class="headerlink" href="#choosing-the-base-image" title="Permalink to this heading"></a></h3>
-<p>As mentioned earlier, we must choose the operating system first. There are many images for various operating
-systems on <a class="reference external" href="https://hub.docker.com/search?q=linux&amp;type=image">Docker Hub</a>. These are called base images,
-because they are the starting point of any Docker image.</p>
-<p>We could install any of these images, and then install what we need, such as Python and our dependencies.
-This is a task that all Python developers perform often, so in order to speed up the process,
-the Python foundation already provides many images that contain Python. See the <a class="reference external" href="https://hub.docker.com/_/python">list of images</a>.</p>
-<p>Let’s pick a Python version, we want to use <strong>Python 3.8.2</strong>. This is somewhat arbitrary and more importantly, it is
-used in our <a class="reference external" href="https://github.com/ArtFlag/sphinxtechnicalwriting/blob/master/Pipfile">Pipfile</a>, so we have to match this version for coherence purposes.</p>
-<p>The second choice is the type of Python image. As you can see, there are Buster images, Alpine images, and more.
-These are different versions of Linux. Python cannot run on its own, it must run on an operating system so
-these Python images are also based on other images (the Linux images).</p>
-<p>To keep the choice simple, it’s <a class="reference external" href="https://pythonspeed.com/articles/base-image-python-docker-images/">good practice</a> to use the smallest image possible. Let’s choose
-<code class="docutils literal notranslate"><span class="pre">3.8.2-slim-buster</span></code>. It’s a standard choice for a lot of Python projects and a rather lightweight image
-that contains most of what we need.</p>
-<p>To use it in our Dockerfile, we simply write:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>FROM python:3.8-slim-buster
+<p>Aforementioned microservices all run inside their own Docker containers. If interested,
+read more about Docker at the <a class="reference external" href="https://www.docker.com/">Docker website</a>
+.</p>
+<section id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Download the repo zip and unpack it in a convenient location</p></li>
+<li><p>A few slight modifications are needed in the docker-compose.yaml:</p></li>
+</ol>
+<p>at line 20:</p>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>volumes:
+      - /home/leon/dockeri/kod-modbus/modbus-server/server_config.json:/server_config.json:ro
 </pre></div>
 </div>
-</section>
-<section id="installing-the-dependencies">
-<h3>Installing the dependencies<a class="headerlink" href="#installing-the-dependencies" title="Permalink to this heading"></a></h3>
-<p>We have a base image that runs Python on Linux (Debian). We can add our dependencies.</p>
-<p>This is a more complicated step as we need to understand what’s in the base image, and what’s not.
-In our case:</p>
-<ul class="simple">
-<li><p>we need everything from our <a class="reference external" href="https://github.com/ArtFlag/sphinxtechnicalwriting/blob/master/Pipfile">Pipfile</a>, so we install <code class="docutils literal notranslate"><span class="pre">pipenv</span></code>.</p></li>
-<li><p>we want to use our <a class="reference external" href="https://github.com/ArtFlag/sphinxtechnicalwriting/blob/master/Makefile">Makefile</a>  to build the docs, so we install <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p></li>
-</ul>
-<p>It’s also good practice to install security updates and also get rid of cached files.</p>
-<p>To do this, we use:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>RUN apt-get update <span class="o">&amp;&amp;</span> <span class="se">\</span>
-  apt-get -y upgrade <span class="o">&amp;&amp;</span> <span class="se">\</span>
-  apt-get install -y make <span class="o">&amp;&amp;</span> <span class="se">\</span>
-  apt-get clean <span class="o">&amp;&amp;</span> <span class="se">\</span>
-  rm -rf /var/lib/apt/lists/* <span class="o">&amp;&amp;</span> <span class="se">\</span>
-  pip install --no-cache-dir --upgrade pip <span class="o">&amp;&amp;</span> <span class="se">\</span>
-  pip install --no-cache-dir pipenv
+<p>at lines 46 &amp; 47:</p>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>volumes:
+    - /home/leon/dockeri/kod-modbus/grafana/storage:/var/lib/grafana
+    - /home/leon/dockeri/kod-modbus/grafana/provisioning/:/etc/grafana/provisioning
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">RUN</span></code> instruction allows us to execute any command. These commands are standard Debian commands
-to install packages.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Without getting into too much detail, no caching is needed in a Docker image and the lighter the
-image the better, so we delete the cache using <code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">clean</span></code>, <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">/var/lib/apt/lists/*</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">no-cache-dir</span></code>.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">RUN</span></code> (as as all <code class="docutils literal notranslate"><span class="pre">COPY</span></code> and <code class="docutils literal notranslate"><span class="pre">ADD</span></code>) instruction also creates <a class="reference external" href="https://dzone.com/articles/docker-layers-explained">layers</a>. It’s a
-topic in itself but Docker recommends to separate installation instructions from what almost never
-changes, to what changes more often to optimize build times. In your case, we don’t need much,
-and these package never change so they come into the initial RUN instruction.</p>
-</div>
-<p>To modify what’s installed in this image, you would typically add package names after <code class="docutils literal notranslate"><span class="pre">make</span></code>.
-The rest can stay if you require <code class="docutils literal notranslate"><span class="pre">pipenv</span></code>.</p>
-</section>
-<section id="setting-the-work-directory">
-<h3>Setting the work directory<a class="headerlink" href="#setting-the-work-directory" title="Permalink to this heading"></a></h3>
-<p>Our image doesn’t contain any of our files at the moment, only Linux and extra packages.
-In the next step, we will copy files from our repository to the image, but now, let’s set the working directory
-to the name of the repository.</p>
-<p>We do this with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>WORKDIR /sphinxtechnicalwriting
+<p>and at line 69:</p>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>volumes:
+    - /home/leon/dockeri/kod-modbus/node-red:/data
 </pre></div>
 </div>
-<p>This folder is now the default path for all the following commands we will run.</p>
+<p>Edit those parts to match the path of your downloaded root folder.</p>
 </section>
-<section id="copying-files">
-<h3>Copying files<a class="headerlink" href="#copying-files" title="Permalink to this heading"></a></h3>
-<p>The objective of the image is to install our project dependencies, they are listed in our Pipfile.
-We have installed Pipenv, so before we can use it to install our dependencies, we must copy our Pipfile and Pipfile.lock files
-to our image. If the image does not contain them, it will not be able to install anything.</p>
-<p>We do this with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>COPY Pipfile Pipfile.lock /sphinxtechnicalwriting/
+<section id="install-docker-engine">
+<h3>Install Docker Engine<a class="headerlink" href="#install-docker-engine" title="Permalink to this heading"></a></h3>
+<p>After editing the docker-compose file, if not already installed, Docker Engine shall be installed. Instructions on how to do this can be found <a class="reference external" href="https://docs.docker.com/engine/install/">here</a></p>
+</section>
+<section id="spooling-up-the-containers">
+<h3>Spooling up the containers<a class="headerlink" href="#spooling-up-the-containers" title="Permalink to this heading"></a></h3>
+<p>If needed, user can change credentials for accessing Grafana and InfluxDB admin interfaces. this can be done by editing the .env file inside <a class="reference external" href="https://github.com/mrleongalaxyum/kod-modbus/tree/main/docker-compose-files">docker-compose-files folder</a></p>
+<p>All that needs to be done now is to open up a terminal, and run the following command:</p>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>docker compose up
 </pre></div>
 </div>
-<p>Notice that we copy them to our working directory.</p>
-</section>
-<section id="id1">
-<h3>Installing the dependencies<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
-<p>We have copied our dependency list to our image, we can now build them in our image.</p>
-<p>We do this with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>RUN pipenv install --system --deploy
-</pre></div>
-</div>
-<p>This command is similar to what we used in <span class="xref std std-ref">config-env</span> but slightly modified for Docker use. It
-doesn’t create a virtual environment but installs everything at system level and also install the packages
-from the lock file. See the <a class="reference external" href="https://pipenv.pypa.io/en/latest/advanced/#using-pipenv-for-deployments">Pipenv docs</a>.</p>
+<p>Now the containers should be running and the app should be ready for use!</p>
 </section>
 </section>
-<section id="building-the-image">
-<h2>Building the image<a class="headerlink" href="#building-the-image" title="Permalink to this heading"></a></h2>
-<p>We have the following Dockerfile:</p>
-<p>To build it, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker build -t sphinx_image .
-</pre></div>
-</div>
-<p>This creates an image named <code class="docutils literal notranslate"><span class="pre">sphinx_image</span></code>.</p>
 </section>
-<section id="using-the-image">
-<h2>Using the image<a class="headerlink" href="#using-the-image" title="Permalink to this heading"></a></h2>
-<p>Once you have built the image, you can run any command in it using:</p>
-<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">sphinx_image</span> <span class="pre">&lt;command&gt;</span></code></p>
-<p>For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run sphinx_image <span class="nb">echo</span> <span class="s2">&quot;hello&quot;</span>
-</pre></div>
-</div>
-<p>prints <code class="docutils literal notranslate"><span class="pre">hello</span></code>.</p>
-<p>We created the image to build the docs so let’s use our Makefile:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run sphinx_image make html
-</pre></div>
-</div>
-<p>This outputs <code class="docutils literal notranslate"><span class="pre">make:</span> <span class="pre">***</span> <span class="pre">No</span> <span class="pre">rule</span> <span class="pre">to</span> <span class="pre">make</span> <span class="pre">target</span> <span class="pre">'html'.</span>&#160; <span class="pre">Stop.</span></code>, which is normal since there is no makefile in
-this image. There is only our dependencies.</p>
-<p>Let’s create a volume to share our repository with the docker image:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/sphinxtechnicalwriting sphinx_image make html
-</pre></div>
-</div>
-<p>The docs are built and the output is in the same folder as when you run it locally.</p>
+<section id="services">
+<h1>Services<a class="headerlink" href="#services" title="Permalink to this heading"></a></h1>
+<p>All of the used services are open-source and feature their own large forum-based communities where one can find the needed answers and ask other experienced developers for help if needed.</p>
+<section id="node-red">
+<h2>Node-RED<a class="headerlink" href="#node-red" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://nodered.org/">Node-RED</a> is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.</p>
+<p>It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click. In this context, Node-RED is used as a central microservice that fetches data from the ModBus slave, periodically stores it into an InfluxDB database, and provides a GUI through which the user can access and interact with Grafana charts and control the ModBus slave (change coil states, read and write registers…). It’s main features are the graphical-programming interface and lots of available, community-collaborated plugins and nodes.</p>
 </section>
-<section id="next-steps">
-<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this heading"></a></h2>
-<p>There’s no real benefit in using Docker if you’ve already set up a local environment, but if you haven’t
-you can build the docs in 2 commands, which is great:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker build -t sphinx_image .
-docker run -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/sphinxtechnicalwriting sphinx_image make html
-</pre></div>
-</div>
-<p>You can also use this image in your CI pipeline to get reproducible builds, and speed them up by using a Docker
-image registry.</p>
+<section id="influxdb">
+<h2>InfluxDB<a class="headerlink" href="#influxdb" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://www.influxdata.com/">InfluxDB</a> is The Time Series Data Platform where developers build IoT, analytics, and cloud applications. It’s used to store data from the ModBus slave for data analytics and persistence purposes. It’s admin interface is very powerful and allows easy data exploration, query generations and quick visualizations for easy debugging and management.</p>
+</section>
+<section id="grafana">
+<h2>Grafana<a class="headerlink" href="#grafana" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://grafana.com/">Grafana</a>
+is a multi-platform open source analytics and interactive visualization web application. It provides charts, graphs, and alerts for the web when connected to supported data sources. A licensed Grafana Enterprise version with additional capabilities is also available as a self-hosted installation or an account on the Grafana Labs cloud service. It is expandable through a plug-in system. End users can create complex monitoring dashboards using interactive query builders. Grafana is divided into a front end and back end, written in TypeScript and Go, respectively.</p>
+<p>As a visualization tool, Grafana is a popular component in monitoring stacks, often used in combination with time series databases such as InfluxDB, Prometheus and Graphite; monitoring platforms such as Sensu, Icinga, Checkmk, Zabbix, Netdata, and PRTG; SIEMs such as Elasticsearch and Splunk; and other data sources. The Grafana user interface was originally based on version 3 of Kibana.</p>
+</section>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://www.python.org/">Python</a> is in this case used for a simple script that generates dummy data and writes it to the ModBus TCP slave, thus emulating a slave collecting data during normal operation. The script was containerized and is available to pull at the <a class="reference external" href="https://hub.docker.com/repository/docker/mrleongalaxyum/modbus-sim">Docker Hub</a>.</p>
 </section>
 </section>
 

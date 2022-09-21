@@ -77,7 +77,7 @@ If needed, user can change credentials for accessing Grafana and InfluxDB admin 
 All that needs to be done now is to open up a terminal, and run the following command:
 
 
-.. code-block:: linux
+.. code-block:: docker
 
    docker compose up
   
