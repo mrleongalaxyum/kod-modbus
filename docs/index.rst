@@ -21,7 +21,7 @@ As it stands, it's comprised of 4 separate, but integrated, microservices. Every
 
 Those services are:
 
-- ModBus TCP slave that simulates and end device
+- ModBus TCP slave that simulates an end device
 - A python script that writes simulated data into the slave
 - InfluxDB timeseries database for storing states and persistence
 - Grafana for drawing interactive and visually pretty graphs from DB queries
@@ -83,6 +83,22 @@ All that needs to be done now is to open up a terminal, and run the following co
   
 
 Now the containers should be running and the app should be ready for use!
+
+Services
+=================================
+All of the used services are open-source and feature their own large forum-based communities where one can find the needed answers and ask other experienced developers for help if needed. 
+
+Node-RED
+---------------------------------
+`Node-RED <https://nodered.org/>`_ is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.
+
+It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click. In this context, Node-RED is used as a central microservice that fetches data from the ModBus slave, periodically stores it into an InfluxDB database, and provides a GUI through which the user can access and interact with Grafana charts and control the ModBus slave (change coil states, read and write registers...). It's main features are the graphical-programming interface and lots of available, community-collaborated plugins and nodes.
+
+
+InfluxDB
+---------------------------------
+
+`InfluxDB <https://www.influxdata.com/>`_ is The Time Series Data Platform where developers build IoT, analytics, and cloud applications. It's used to store data from the ModBus slave for data analytics and persistence purposes. It's admin interface is very powerful and allows easy data exploration, query generations and quick visualizations for easy debugging and management. 
 
 
 
