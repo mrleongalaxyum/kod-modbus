@@ -19,8 +19,6 @@ services:
     hostname: influxdb
     ports:
       - '8086:8086'
-    #volumes:
-      #- /home/leon/dockeri/kod-modbus/influxdb/storage:/var/lib/influxdb
     environment:
       - INFLUXDB_DB=db0
       - INFLUXDB_ADMIN_USER=${INFLUXDB_USERNAME}
@@ -42,9 +40,6 @@ services:
 
     ports:
       - '3000:3000'
-    #volumes:
-      #- /home/leon/dockeri/kod-modbus/grafana/storage:/var/lib/grafana
-      #- /home/leon/dockeri/kod-modbus/grafana/provisioning/:/etc/grafana/provisioning
     depends_on:
       - influxdb
     environment:
