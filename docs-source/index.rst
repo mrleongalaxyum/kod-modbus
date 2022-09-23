@@ -36,53 +36,20 @@ read more about Docker at the `Docker website <https://www.docker.com/>`_
 
 Setup
 +++++++++++++++++++++++
-1. Download the repo zip and unpack it in a convenient location 
-2. A few slight modifications are needed in the docker-compose.yaml:
 
-at line 20:
+1. Install Docker Engine. Instructions on how to do this can be found `here <https://docs.docker.com/engine/install/>`_
 
-.. code-block:: docker
-     
-  volumes:
-        - /home/leon/dockeri/kod-modbus/modbus-server/server_config.json:/server_config.json:ro
+2. Download the files from `docker-compose-files directory  <https://github.com/mrleongalaxyum/kod-modbus/tree/main/docker-compose-files>`_
 
-at lines 46 & 47:
-
-.. code-block:: docker
-
-  volumes:
-      - /home/leon/dockeri/kod-modbus/grafana/storage:/var/lib/grafana
-      - /home/leon/dockeri/kod-modbus/grafana/provisioning/:/etc/grafana/provisioning
-
-and at line 69:
-
-.. code-block:: docker
-
-    volumes:
-        - /home/leon/dockeri/kod-modbus/node-red:/data
-
-Edit those parts to match the path of your downloaded root folder. 
-
-Install Docker Engine
-+++++++++++++++++++++++++++
-
-After editing the docker-compose file, if not already installed, Docker Engine shall be installed. Instructions on how to do this can be found `here <https://docs.docker.com/engine/install/>`_
-
-
-Spooling up the containers
-+++++++++++++++++++++++++++
-
-If needed, user can change credentials for accessing Grafana and InfluxDB admin interfaces. this can be done by editing the .env file inside `docker-compose-files folder <https://github.com/mrleongalaxyum/kod-modbus/tree/main/docker-compose-files>`_
-
-All that needs to be done now is to open up a terminal, and run the following command:
+All that needs to be done now is to open up a terminal in the downloaded folder and run the following command:
 
 
 .. code-block:: docker
 
-   docker compose up
+   docker compose up -d
   
 
-Now the containers should be running and the app should be ready for use!
+Now the containers should be up running and the app should be ready for use!
 
 Services
 =================================

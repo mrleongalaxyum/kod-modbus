@@ -41,8 +41,6 @@
 <li><a class="reference internal" href="#">Welcome to kod-modbus-app’s documentation!</a><ul>
 <li><a class="reference internal" href="#about-the-app">About The App</a><ul>
 <li><a class="reference internal" href="#setup">Setup</a></li>
-<li><a class="reference internal" href="#install-docker-engine">Install Docker Engine</a></li>
-<li><a class="reference internal" href="#spooling-up-the-containers">Spooling up the containers</a></li>
 </ul>
 </li>
 </ul>
@@ -102,39 +100,14 @@ read more about Docker at the <a class="reference external" href="https://www.do
 <section id="setup">
 <h3>Setup<a class="headerlink" href="#setup" title="Permalink to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Download the repo zip and unpack it in a convenient location</p></li>
-<li><p>A few slight modifications are needed in the docker-compose.yaml:</p></li>
+<li><p>Install Docker Engine. Instructions on how to do this can be found <a class="reference external" href="https://docs.docker.com/engine/install/">here</a></p></li>
+<li><p>Download the files from <a class="reference external" href="https://github.com/mrleongalaxyum/kod-modbus/tree/main/docker-compose-files">docker-compose-files directory</a></p></li>
 </ol>
-<p>at line 20:</p>
-<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>volumes:
-      - /home/leon/dockeri/kod-modbus/modbus-server/server_config.json:/server_config.json:ro
+<p>All that needs to be done now is to open up a terminal in the downloaded folder and run the following command:</p>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>docker compose up -d
 </pre></div>
 </div>
-<p>at lines 46 &amp; 47:</p>
-<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>volumes:
-    - /home/leon/dockeri/kod-modbus/grafana/storage:/var/lib/grafana
-    - /home/leon/dockeri/kod-modbus/grafana/provisioning/:/etc/grafana/provisioning
-</pre></div>
-</div>
-<p>and at line 69:</p>
-<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>volumes:
-    - /home/leon/dockeri/kod-modbus/node-red:/data
-</pre></div>
-</div>
-<p>Edit those parts to match the path of your downloaded root folder.</p>
-</section>
-<section id="install-docker-engine">
-<h3>Install Docker Engine<a class="headerlink" href="#install-docker-engine" title="Permalink to this heading"></a></h3>
-<p>After editing the docker-compose file, if not already installed, Docker Engine shall be installed. Instructions on how to do this can be found <a class="reference external" href="https://docs.docker.com/engine/install/">here</a></p>
-</section>
-<section id="spooling-up-the-containers">
-<h3>Spooling up the containers<a class="headerlink" href="#spooling-up-the-containers" title="Permalink to this heading"></a></h3>
-<p>If needed, user can change credentials for accessing Grafana and InfluxDB admin interfaces. this can be done by editing the .env file inside <a class="reference external" href="https://github.com/mrleongalaxyum/kod-modbus/tree/main/docker-compose-files">docker-compose-files folder</a></p>
-<p>All that needs to be done now is to open up a terminal, and run the following command:</p>
-<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>docker compose up
-</pre></div>
-</div>
-<p>Now the containers should be running and the app should be ready for use!</p>
+<p>Now the containers should be up running and the app should be ready for use!</p>
 </section>
 </section>
 </section>
