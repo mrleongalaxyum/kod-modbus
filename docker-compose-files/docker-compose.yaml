@@ -3,13 +3,12 @@ services:
   modbus-server:
       container_name: modbus-server
       hostname: modbus
-      image: oitc/modbus-server
+      image: mrleongalaxyum/my-modbus
       restart: always
       command: -f /server_config.json
       ports:
         - 5020:5020
-      volumes:
-        - /home/leon/dockeri/kod-modbus/modbus-server/server_config.json:/server_config.json:ro
+
         
 
     
@@ -19,6 +18,7 @@ services:
     hostname: influxdb
     ports:
       - '8086:8086'
+
     environment:
       - INFLUXDB_DB=db0
       - INFLUXDB_ADMIN_USER=${INFLUXDB_USERNAME}
@@ -40,6 +40,7 @@ services:
 
     ports:
       - '3000:3000'
+
     depends_on:
       - influxdb
     environment:
