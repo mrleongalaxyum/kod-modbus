@@ -62,8 +62,8 @@ services:
     ports:
       - "1880:1880"
 
-    volumes:
-      - /home/leon/dockeri/kod-modbus/node-red:/data
+    #volumes:
+      #- /home/leon/dockeri/kod-modbus/node-red:/data
       
   python-modbus-sim:
     image: mrleongalaxyum/modbus-sim:latest
