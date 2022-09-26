@@ -1,0 +1,53 @@
+name: Build & publish kod-modbus images
+on:
+  release:
+    types: [published]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - dockerfile: ./grafana-docker/Dockerfile
+            image: ghcr.io/mrleongalaxyum/myGrafana
+          - dockerfile: ./node-red-docker-files/Dockerfile
+            image: ghcr.io/mrleongalaxyum/myNR
+          - dockerfile: ./modbus-server-5020-docker/Dockerfile
+            image: ghcr.io/mrleongalaxyum/myMB
+          - dockerfile: ./python-docker/Dockerfile
+            image: ghcr.io/mrleongalaxyum/myMBSim
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GH_PACKAGE_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ matrix.image }}
+
+      - name: Build and push Docker image Drill4Net.Agent.Service
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
