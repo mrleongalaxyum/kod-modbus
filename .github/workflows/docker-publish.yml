@@ -11,7 +11,7 @@ on:
     types:
       - completed
   push:
-    branches: [ "latest" ]
+    branches: [ "gf-docker-test" ]
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ "main" ]
@@ -29,12 +29,7 @@ jobs:
         include:
           - dockerfile: ./grafana-docker/Dockerfile
             image: ghcr.io/mrleongalaxyum/myGrafana
-          - dockerfile: ./node-red-docker-files/Dockerfile
-            image: ghcr.io/mrleongalaxyum/kod-modbus-NR
-          - dockerfile: ./modbus-server-5020-docker/Dockerfile
-            image: ghcr.io/mrleongalaxyum/myMB
-          - dockerfile: ./python-docker/Dockerfile
-            image: ghcr.io/mrleongalaxyum/myMBSim
+        
     
     permissions:
       contents: read
