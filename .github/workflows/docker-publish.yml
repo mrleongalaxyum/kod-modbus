@@ -7,11 +7,11 @@ name: Docker
 
 on:
   workflow_run:
-    workflows: [nr-docker-test]
+    workflows: [docker-publish]
     types:
       - completed
   push:
-    branches: [ "latest" ]
+    branches: [ "nr-docker-test" ]
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ "main" ]
