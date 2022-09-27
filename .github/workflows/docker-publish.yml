@@ -27,12 +27,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - dockerfile: ./grafana-docker/Dockerfile
-            image: ghcr.io/mrleongalaxyum/myGrafana
-          - dockerfile: ./node-red-docker-files/Dockerfile
-            image: ghcr.io/mrleongalaxyum/kod-modbus-NR
-          - dockerfile: ./modbus-server-5020-docker/Dockerfile
-            image: ghcr.io/mrleongalaxyum/myMB
           - dockerfile: ./python-docker/Dockerfile
             image: ghcr.io/mrleongalaxyum/myMBSim
     
