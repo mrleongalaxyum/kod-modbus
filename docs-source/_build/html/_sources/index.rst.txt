@@ -51,6 +51,8 @@ All that needs to be done now is to open up a terminal in the downloaded folder 
 
 Now the containers should be up running and the app should be ready for use!
 
+After starting the app the UI is available on http://localhost:1880/ui
+
 Services
 =================================
 All of the used services are open-source and feature their own large forum-based communities where one can find the needed answers and ask other experienced developers for help if needed. 
