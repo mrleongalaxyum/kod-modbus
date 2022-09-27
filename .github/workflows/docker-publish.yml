@@ -6,11 +6,12 @@ name: Docker
 # documentation.
 
 on:
-  schedule:
-    - cron: '36 17 * * *'
+  workflow_run:
+    workflows: [docker-publish]
+    types:
+      - completed
   push:
-    branches: [ "main" ]
-    # Publish semver tags as releases.
+    branches: [ "mrleongalaxyum-patch-2" ]
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ "main" ]
