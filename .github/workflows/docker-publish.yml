@@ -7,7 +7,7 @@ name: Docker
 
 on:
   workflow_run:
-    workflows: [docker-publish]
+    workflows: [nr-docker-test]
     types:
       - completed
   push:
