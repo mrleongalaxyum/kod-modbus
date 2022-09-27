@@ -3,7 +3,7 @@ services:
   modbus-server:
       container_name: modbus-server
       hostname: modbus
-      image: mrleongalaxyum/my-modbus
+      image: ghcr.io/mrleongalaxyum/mymb:latest
       restart: always
       command: -f /server_config.json
       ports:
@@ -34,7 +34,7 @@ services:
     command: sh -c 'sleep 5; influx setup --bucket "${INFLUX_DATA_BUCKET}" --token "${INFLUXDB_V2_TOKEN}" --org "${INFLUXDB_V2_ORG}" --username=${INFLUXDB_USERNAME} --password=${INFLUXDB_PASSWORD} --host=http://influxdb:8086 --force'
  
   grafana:
-    image: mrleongalaxyum/gf-kod-modbus:latest
+    image: ghcr.io/mrleongalaxyum/mygrafana:latest
     restart: always
     hostname: grafana
 
@@ -55,7 +55,7 @@ services:
     user: "1000"
     
   node-red:
-    image: mrleongalaxyum/nr-kod-modbus:latest
+    image: ghcr.io/mrleongalaxyum/kod-modbus-nr
     environment:
       - TZ=Europe/Zagreb
     restart: unless-stopped
@@ -63,7 +63,7 @@ services:
       - "1880:1880"
       
   python-modbus-sim:
-    image: mrleongalaxyum/modbus-sim:latest
+    image: ghcr.io/mrleongalaxyum/mymbsim:latest
     restart: unless-stopped
    
     
