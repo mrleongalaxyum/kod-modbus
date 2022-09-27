@@ -1,4 +1,4 @@
 FROM oitc/modbus-server
-WORKDIR .
 COPY . .
-
+WORKDIR .
+RUN dir -s
