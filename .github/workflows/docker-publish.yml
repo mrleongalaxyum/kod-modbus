@@ -11,7 +11,7 @@ on:
     types:
       - completed
   push:
-    branches: [ "mrleongalaxyum-patch-2" ]
+    branches: [ "gh-actions-docker-builds" ]
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ "main" ]
