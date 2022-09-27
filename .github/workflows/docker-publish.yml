@@ -11,7 +11,7 @@ on:
     types:
       - completed
   push:
-    branches: [ "latest" ]
+    branches: [ "py-docker-test" ]
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ "main" ]
